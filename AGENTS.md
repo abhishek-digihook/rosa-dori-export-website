@@ -1,9 +1,44 @@
-<!-- BEGIN:nextjs-agent-rules -->
+# Working in this repo
 
-# This is NOT the Next.js you know
+Marketing site for ROSA DORI. Next.js 16 App Router, React 19, TypeScript,
+Tailwind v4 (CSS-first `@theme`), Motion. See `README.md` for the full picture.
 
-This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+## Where things live
 
-This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+- `src/lib/products.ts` — the catalogue. 4 categories, 43 products. Adding a
+  product here automatically produces its page, grid tile, sitemap entry and
+  contact-form option. This is the single source of truth; don't duplicate
+  product copy into pages.
+- `src/lib/site.ts` — company details, navigation, pillars, materials, process.
+- `src/components/ProductArt.tsx` — the generated product imagery. A kit of
+  silhouettes, handles, textures, palettes and accents, composed per product.
+- `src/components/motion/` — the only place `"use client"` motion code lives.
 
-<!-- END:nextjs-agent-rules -->
+## Conventions
+
+- **Server components by default.** Only reach for `"use client"` when something
+  genuinely needs state, an event handler or a browser API. Product cards use
+  CSS `group-hover` rather than JS precisely to stay on the server.
+- **Never export non-components from a `"use client"` module and import them on
+  the server** — the server receives an opaque client reference, not the value.
+  Shared constants go in `src/lib/` (this is why `INTENTS` lives in
+  `src/lib/enquiry.ts`).
+- **Colours and fonts come from the `@theme` block** in `src/app/globals.css`.
+  Use `bg-cream`, `text-bark`, `font-display` — don't hardcode hex values in
+  components.
+- **Every animation needs a static resting state.** `prefers-reduced-motion`
+  turns motion off entirely; nothing may become unreadable or invisible when it
+  does.
+
+## Don't invent facts
+
+Contact details, client names and product dimensions are placeholders or
+unverified — see the "Before you go live" section of `README.md`. Don't fill
+gaps with plausible-sounding specifics; leave them for the client to confirm.
+
+## Checks
+
+```bash
+npm run build   # typechecks and prerenders all 58 routes
+npm run lint
+```

@@ -1,26 +1,233 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* ==================================================================
+   ROSA DORI — design tokens
+   Warm, natural-fibre palette drawn from jute, raw cotton and clay.
+   ================================================================== */
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@theme {
+  /* --- Surfaces --------------------------------------------------- */
+  --color-cream: #faf5ee; /* page background */
+  --color-shell: #f5ede2; /* alternating section */
+  --color-sand: #f0e5d6; /* cards, wells */
+  --color-linen: #e7d9c5; /* borders, dividers, fills */
+  --color-clay: #d9bfae; /* brand accent — the logo circle */
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  /* --- Ink --------------------------------------------------------- */
+  --color-espresso: #2b2018; /* primary text */
+  --color-bark: #6e4423; /* brand brown — buttons, top bar */
+  --color-bark-deep: #573419; /* hover state */
+  --color-cocoa: #7a6553; /* secondary text */
+  --color-mist: #9d8b79; /* tertiary text, meta */
+
+  /* --- Accents ----------------------------------------------------- */
+  --color-olive: #7c8465; /* botanical green */
+  --color-wine: #a8322b; /* the red tote */
+  --color-indigo: #46566e; /* Shital Patti indigo */
+  --color-lemon: #c9a03f; /* Shital Patti sunny */
+
+  /* --- Typography --------------------------------------------------- */
+  --font-display: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  --font-sans: var(--font-jost), "Jost", ui-sans-serif, system-ui, sans-serif;
+
+  /* --- Rhythm ------------------------------------------------------- */
+  --radius-card: 2px;
+
+  /* --- Easing ------------------------------------------------------- */
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out-soft: cubic-bezier(0.65, 0, 0.35, 1);
+
+  /* --- Keyframe-backed utilities ------------------------------------ */
+  --animate-marquee: marquee 38s linear infinite;
+  --animate-drift: drift 14s ease-in-out infinite;
+  --animate-drift-slow: drift 22s ease-in-out infinite;
+  --animate-sway: sway 9s ease-in-out infinite;
+  --animate-shimmer: shimmer 3.5s ease-in-out infinite;
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes drift {
+    0%,
+    100% {
+      transform: translate3d(0, 0, 0);
+    }
+    50% {
+      transform: translate3d(0, -10px, 0);
+    }
+  }
+
+  @keyframes sway {
+    0%,
+    100% {
+      transform: rotate(-1.1deg);
+    }
+    50% {
+      transform: rotate(1.1deg);
+    }
+  }
+
+  @keyframes shimmer {
+    0%,
+    100% {
+      opacity: 0.25;
+    }
+    50% {
+      opacity: 0.7;
+    }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ==================================================================
+   Base
+   ================================================================== */
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-cream);
+    color: var(--color-espresso);
+    font-family: var(--font-sans);
+    font-weight: 300;
+    line-height: 1.65;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    line-height: 1.08;
+    letter-spacing: -0.005em;
+  }
+
+  ::selection {
+    background-color: var(--color-clay);
+    color: var(--color-espresso);
+  }
+
+  /* Keyboard focus only — never a ring on mouse clicks. */
+  :focus-visible {
+    outline: 2px solid var(--color-bark);
+    outline-offset: 3px;
+  }
+
+  /* Slim, warm scrollbar to match the palette. */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-linen) transparent;
+  }
+}
+
+/* ==================================================================
+   Reusable pieces
+   ================================================================== */
+
+@layer components {
+  /* Small tracked-out label used above almost every section heading. */
+  .eyebrow {
+    font-size: 0.6875rem;
+    font-weight: 400;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-bark);
+  }
+
+  /* Page gutter — one definition so every section lines up. */
+  .shell {
+    width: 100%;
+    max-width: 84rem;
+    margin-inline: auto;
+    padding-inline: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .shell {
+      padding-inline: 2.5rem;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .shell {
+      padding-inline: 4rem;
+    }
+  }
+
+  /* Hairline rule in the brand's warm neutral. */
+  .rule {
+    height: 1px;
+    background-color: color-mix(in srgb, var(--color-espresso) 14%, transparent);
+  }
+
+  /* Underline that wipes in from the left on hover. */
+  .link-wipe {
+    position: relative;
+  }
+
+  .link-wipe::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    height: 1px;
+    width: 100%;
+    background-color: currentColor;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.45s var(--ease-out-soft);
+  }
+
+  .link-wipe:hover::after,
+  .link-wipe[data-active="true"]::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+
+  /* Woven-fibre backdrop, built from layered gradients (no image cost). */
+  .weave {
+    background-image:
+      repeating-linear-gradient(
+        90deg,
+        color-mix(in srgb, var(--color-espresso) 4%, transparent) 0 1px,
+        transparent 1px 7px
+      ),
+      repeating-linear-gradient(
+        0deg,
+        color-mix(in srgb, var(--color-espresso) 4%, transparent) 0 1px,
+        transparent 1px 7px
+      );
+  }
+}
+
+/* ==================================================================
+   Motion preferences
+   Motion is decoration here — every animation has a static resting
+   state, so switching it all off loses nothing but movement.
+   ================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }
