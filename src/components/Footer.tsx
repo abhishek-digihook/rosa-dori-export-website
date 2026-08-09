@@ -9,8 +9,8 @@ import { materials, site } from "@/lib/site";
 const storyLinks = [
   { label: "Our Journey", href: "/our-story" },
   { label: "Our Artisans", href: "/our-story#artisans" },
-  { label: "Sustainability", href: "/our-story#sustainability" },
   { label: "How We Work", href: "/our-story#process" },
+  { label: "Sustainability", href: "/sustainability" },
 ];
 
 const supportLinks = [
@@ -148,7 +148,7 @@ export function Footer() {
             title="Materials"
             links={materials.slice(0, 5).map((m) => ({
               label: m.name,
-              href: "/our-story#materials",
+              href: "/materials",
             }))}
           />
 
@@ -160,7 +160,7 @@ export function Footer() {
           <div className="rule" />
           <div className="grid gap-6 py-8 text-sm text-cocoa sm:grid-cols-3">
             <p>
-              <span className="mb-1 block text-[0.62rem] tracking-[0.2em] text-mist uppercase">
+              <span className="mb-1 block text-[0.68rem] tracking-[0.2em] text-mist uppercase">
                 Email
               </span>
               <a href={`mailto:${site.contact.email}`} className="link-wipe">
@@ -168,7 +168,7 @@ export function Footer() {
               </a>
             </p>
             <p>
-              <span className="mb-1 block text-[0.62rem] tracking-[0.2em] text-mist uppercase">
+              <span className="mb-1 block text-[0.68rem] tracking-[0.2em] text-mist uppercase">
                 Telephone
               </span>
               <a href={`tel:${site.contact.phoneHref}`} className="link-wipe">
@@ -176,7 +176,7 @@ export function Footer() {
               </a>
             </p>
             <p>
-              <span className="mb-1 block text-[0.62rem] tracking-[0.2em] text-mist uppercase">
+              <span className="mb-1 block text-[0.68rem] tracking-[0.2em] text-mist uppercase">
                 Studio
               </span>
               <span className="not-italic">

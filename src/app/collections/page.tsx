@@ -71,13 +71,13 @@ export default function CollectionsPage() {
                   {items.slice(0, 5).map((item) => (
                     <li
                       key={item.slug}
-                      className="border border-linen px-3 py-1.5 text-[0.62rem] tracking-[0.12em] text-cocoa uppercase"
+                      className="border border-linen px-3 py-1.5 text-[0.68rem] tracking-[0.12em] text-cocoa uppercase"
                     >
                       {item.name}
                     </li>
                   ))}
                   {items.length > 5 && (
-                    <li className="px-3 py-1.5 text-[0.62rem] tracking-[0.12em] text-mist uppercase">
+                    <li className="px-3 py-1.5 text-[0.68rem] tracking-[0.12em] text-mist uppercase">
                       +{items.length - 5} more
                     </li>
                   )}

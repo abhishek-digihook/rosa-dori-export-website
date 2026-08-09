@@ -295,8 +295,12 @@ export function Header() {
     setMenuOpen(false);
   }
 
-  const isActive = (href: string) =>
-    href === "/" ? pathname === "/" : pathname.startsWith(href);
+  const isActive = (href: string) => {
+    // Section links ("/#our-story") are positions on a page, not pages. There
+    // is no scroll spy, so none of them claims the active underline.
+    if (href.includes("#")) return false;
+    return href === "/" ? pathname === "/" : pathname.startsWith(href);
+  };
 
   return (
     <>
@@ -305,7 +309,7 @@ export function Header() {
         {/* min-height rather than a fixed height: the strapline wraps to two
             lines on narrow screens and must not be clipped. */}
         <div className="shell flex min-h-9 items-center justify-center py-2">
-          <p className="text-center text-[0.6rem] tracking-[0.2em] uppercase opacity-90 sm:text-[0.62rem] sm:tracking-[0.24em]">
+          <p className="text-center text-[0.66rem] tracking-[0.2em] uppercase opacity-90 sm:text-[0.68rem] sm:tracking-[0.24em]">
             {site.strapline}
           </p>
         </div>
@@ -324,7 +328,7 @@ export function Header() {
           </Link>
 
           <nav aria-label="Primary" className="hidden lg:block">
-            <ul className="flex items-center gap-9">
+            <ul className="flex items-center gap-6 xl:gap-8">
               {navigation.map((item) =>
                 item.children ? (
                   <li key={item.href}>

@@ -130,7 +130,7 @@ export const categories: Category[] = [
     tagline: "Bottle bags, wine purses & pouches",
     intro:
       "Packaging built around the bottle — jute, canvas, handmade paper and seed paper carriers that make a single bottle feel like a gift. Every piece is reusable, recyclable and made to carry a brand as carefully as it carries a bottle.",
-    note: "Made for wineries, distilleries, olive oil producers, speciality grocers and corporate gifting programmes.",
+    note: "Single, double, triple and six-bottle formats, with removable dividers where the carrier needs them.",
   },
   {
     slug: "food-and-deli",
@@ -142,7 +142,7 @@ export const categories: Category[] = [
   },
   {
     slug: "shoppers-and-groceries",
-    name: "Shoppers & Carry Bags",
+    name: "Shoppers & Market Bags",
     tagline: "Totes, shoppers & grain sacks",
     intro:
       "The everyday carry — reinforced jute and cotton canvas shoppers built for weekly grocery runs, retail checkouts and market stalls. Generous gussets, stitched-through handles and honest materials that survive years of use.",
@@ -150,7 +150,7 @@ export const categories: Category[] = [
   },
   {
     slug: "lifestyle-and-promotions",
-    name: "Lifestyle Products",
+    name: "Lifestyle & Promotional Products",
     tagline: "Baskets, handbags, yoga & picnic",
     intro:
       "Pieces for the home and the day out — laundry baskets, picnic sets, yoga carriers, reversible handbags and our hand-woven Shital Patti range. Designed as objects people keep, not packaging people discard.",
@@ -395,7 +395,6 @@ export const products: Product[] = [
       palette: "clay",
       accent: "botanical",
     },
-    status: "sample-pending",
   },
   {
     slug: "handmade-paper-bottle-bag-embroidery-stone",
@@ -655,7 +654,6 @@ export const products: Product[] = [
       palette: "wheat",
       accent: "none",
     },
-    status: "photography-pending",
   },
   {
     slug: "jute-baguette-bag",
@@ -745,7 +743,6 @@ export const products: Product[] = [
       palette: "wine",
       accent: "label",
     },
-    status: "sample-pending",
   },
   {
     slug: "jute-reversible-green-shopper",
@@ -766,7 +763,6 @@ export const products: Product[] = [
       palette: "forest",
       accent: "none",
     },
-    status: "sample-pending",
   },
   {
     slug: "canvas-shopper",

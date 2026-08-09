@@ -58,7 +58,7 @@ function Spec({
 
   return (
     <div className="border-t border-linen py-5">
-      <dt className="text-[0.62rem] tracking-[0.18em] text-mist uppercase">
+      <dt className="text-[0.68rem] tracking-[0.18em] text-mist uppercase">
         {label}
       </dt>
       <dd className="mt-2.5 flex flex-wrap gap-x-2 gap-y-2">
@@ -108,7 +108,7 @@ export default async function ProductPage({
         <div className="shell py-10 lg:py-16">
           {/* --- Breadcrumb --- */}
           <nav aria-label="Breadcrumb">
-            <ol className="flex flex-wrap items-center gap-2 text-[0.64rem] tracking-[0.14em] text-mist uppercase">
+            <ol className="flex flex-wrap items-center gap-2 text-[0.68rem] tracking-[0.14em] text-mist uppercase">
               <li>
                 <Link href="/" className="transition-colors hover:text-bark">
                   Home
@@ -164,15 +164,16 @@ export default async function ProductPage({
               <h1 className="mt-4 text-[2.25rem] leading-[1.08] md:text-[3rem]">
                 {product.name}
               </h1>
-              <p className="mt-6 text-lg leading-relaxed text-cocoa">
+              <p className="mt-7 text-lg leading-relaxed text-cocoa">
                 {product.summary}
               </p>
 
-              <div className="mt-8 max-w-xl leading-relaxed text-cocoa">
+              <div className="mt-7 max-w-xl leading-relaxed text-cocoa">
                 <p>{product.description}</p>
               </div>
 
-              <dl className="mt-10">
+              <Eyebrow className="mt-12">Specification</Eyebrow>
+              <dl className="mt-6">
                 <Spec label="Materials" items={product.materials} />
                 <Spec
                   label="Sizes"
@@ -181,7 +182,7 @@ export default async function ProductPage({
                 />
                 <Spec label="Colours" items={product.colours} />
                 <Spec label="Customisation" items={product.customisation} />
-                <Spec label="Typical applications" items={product.applications} />
+                <Spec label="Applications" items={product.applications} />
               </dl>
 
               <div className="mt-10 flex flex-wrap gap-4 border-t border-linen pt-10">
@@ -219,7 +220,7 @@ export default async function ProductPage({
                 </h2>
               </div>
               <ArrowLink href={`/collections/${category.slug}`}>
-                View all {productsByCategory(category.slug).length}
+                View all {productsByCategory(category.slug).length} products
               </ArrowLink>
             </div>
 

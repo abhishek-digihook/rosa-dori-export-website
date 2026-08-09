@@ -53,7 +53,7 @@ export default async function ContactPage({
                 <Eyebrow>Direct</Eyebrow>
                 <dl className="mt-6 space-y-5">
                   <div>
-                    <dt className="text-[0.62rem] tracking-[0.18em] text-mist uppercase">
+                    <dt className="text-[0.68rem] tracking-[0.18em] text-mist uppercase">
                       General
                     </dt>
                     <dd className="mt-1">
@@ -66,7 +66,7 @@ export default async function ContactPage({
                     </dd>
                   </div>
                   <div>
-                    <dt className="text-[0.62rem] tracking-[0.18em] text-mist uppercase">
+                    <dt className="text-[0.68rem] tracking-[0.18em] text-mist uppercase">
                       Sales & wholesale
                     </dt>
                     <dd className="mt-1">
@@ -79,7 +79,7 @@ export default async function ContactPage({
                     </dd>
                   </div>
                   <div>
-                    <dt className="text-[0.62rem] tracking-[0.18em] text-mist uppercase">
+                    <dt className="text-[0.68rem] tracking-[0.18em] text-mist uppercase">
                       Telephone & WhatsApp
                     </dt>
                     <dd className="mt-1">

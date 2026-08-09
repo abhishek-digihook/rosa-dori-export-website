@@ -22,11 +22,7 @@ export const runtime = "nodejs";
 
 type Payload = {
   name?: string;
-  company?: string;
   email?: string;
-  phone?: string;
-  country?: string;
-  quantity?: string;
   intent?: string;
   product?: string;
   message?: string;
@@ -64,7 +60,7 @@ export async function POST(request: Request) {
   if (!name) return fail("Please tell us your name.");
   if (!EMAIL_RE.test(email)) return fail("Please enter a valid email address.");
   if (message.length < 10) {
-    return fail("Please add a little more detail to your brief.");
+    return fail("Please add a little more detail to your message.");
   }
 
   const product = clean(body.product, 120);
@@ -72,24 +68,16 @@ export async function POST(request: Request) {
     receivedAt: new Date().toISOString(),
     name,
     email,
-    company: clean(body.company, 160),
-    phone: clean(body.phone, 60),
-    country: clean(body.country, 80),
-    quantity: clean(body.quantity, 80),
     intent: clean(body.intent, 60) || "general",
     product: product ? (productBySlug(product)?.name ?? product) : "—",
     message,
   };
 
   const lines = [
-    `Name:     ${enquiry.name}`,
-    `Email:    ${enquiry.email}`,
-    `Company:  ${enquiry.company || "—"}`,
-    `Phone:    ${enquiry.phone || "—"}`,
-    `Country:  ${enquiry.country || "—"}`,
-    `Quantity: ${enquiry.quantity || "—"}`,
-    `Intent:   ${enquiry.intent}`,
-    `Product:  ${enquiry.product}`,
+    `Name:    ${enquiry.name}`,
+    `Email:   ${enquiry.email}`,
+    `Type:    ${enquiry.intent}`,
+    `Product: ${enquiry.product}`,
     "",
     enquiry.message,
   ].join("\n");
@@ -118,9 +106,7 @@ export async function POST(request: Request) {
           from: `${site.name} Website <${from}>`,
           to: [to],
           reply_to: enquiry.email,
-          subject: `Website enquiry — ${enquiry.name}${
-            enquiry.company ? ` (${enquiry.company})` : ""
-          }`,
+          subject: `Website enquiry — ${enquiry.name} (${enquiry.intent})`,
           text: lines,
         }),
       });
