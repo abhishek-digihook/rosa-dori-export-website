@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 import { ProductArt } from "@/components/ProductArt";
 import { Parallax } from "@/components/motion/Parallax";
@@ -10,44 +11,14 @@ import {
   PageHero,
   SectionHeading,
 } from "@/components/ui";
-import { materials, process, site } from "@/lib/site";
-import type { ArtSpec } from "@/lib/products";
+import { process, site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Our Story",
   description:
-    "ROSA DORI was founded by three women to bring the elegance of Indian craftsmanship to the global stage. Meet our artisans, our materials and the way we work.",
+    "ROSA DORI was founded by three women to bring the elegance of Indian craftsmanship to the global stage. Meet the founders, the artisans and the way we work.",
   alternates: { canonical: "/our-story" },
 };
-
-/** Artwork paired with each material in the materials grid. */
-const MATERIAL_ART: ArtSpec[] = [
-  { form: "sack", handle: "rope", texture: "jute", palette: "wheat", accent: "label" },
-  { form: "tote", handle: "webbing", texture: "canvas", palette: "natural", accent: "none" },
-  { form: "round-basket", handle: "twin-loop", texture: "sitalpati", palette: "indigo", accent: "none" },
-  { form: "pouch", handle: "drawstring", texture: "khadi", palette: "paper", accent: "none" },
-  { form: "gift-bag", handle: "rope", texture: "paper", palette: "clay", accent: "botanical" },
-  { form: "purse", handle: "shoulder", texture: "lace", palette: "shimmer", accent: "none" },
-];
-
-const commitments = [
-  {
-    title: "Materials that return to the earth",
-    copy: "Jute, cotton, khadi, murta reed and cotton-rag paper are all biodegradable. Nothing we make is designed to outlive its usefulness in a landfill.",
-  },
-  {
-    title: "Made to be used again",
-    copy: "Almost every piece in the range is built for reuse rather than a single journey. Reinforced seams, washable linings and honest construction are the point, not an upgrade.",
-  },
-  {
-    title: "Work that stays in the village",
-    copy: "We produce close to where the fibre is grown and where the craft is held, so income reaches the artisan rather than a chain of intermediaries.",
-  },
-  {
-    title: "Craft preserved by practice",
-    copy: "Chikankari, Shital Patti weaving and hand paper-making survive by being commissioned. Every order keeps a technique in daily use.",
-  },
-];
 
 export default function OurStoryPage() {
   return (
@@ -175,93 +146,60 @@ export default function OurStoryPage() {
       </section>
 
       {/* ============================================================
-          Materials
+          Where to go next — the materials and sustainability detail now
+          lives on its own page rather than extending this one.
           ============================================================ */}
-      <section id="materials" className="scroll-mt-24 bg-cream">
-        <div className="shell py-24 lg:py-32">
-          <Reveal>
-            <SectionHeading
-              eyebrow="Materials"
-              title="Six fibres we know well."
-              intro="We work in a deliberately narrow set of materials, because knowing a fibre properly is what lets you push it. Each is grown or made in India unless noted."
-            />
-          </Reveal>
-
-          <Stagger
-            as="ul"
-            gap={0.08}
-            className="mt-16 grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3"
-          >
-            {materials.map((material, i) => (
-              <StaggerItem as="li" key={material.name} className="group">
-                <div className="aspect-square overflow-hidden bg-sand">
-                  <div className="h-full w-full transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105">
-                    <ProductArt
-                      art={MATERIAL_ART[i]}
-                      id={`material-${i}`}
-                      className="h-full w-full object-cover"
-                    />
-                  </div>
-                </div>
-                <div className="mt-5 flex items-baseline justify-between gap-4">
-                  <h3 className="font-display text-2xl">{material.name}</h3>
-                  <p className="text-[0.62rem] tracking-[0.16em] text-mist uppercase">
-                    {material.origin}
-                  </p>
-                </div>
-                <p className="mt-3 text-sm leading-relaxed text-cocoa">
-                  {material.copy}
+      <section className="bg-cream">
+        <Stagger
+          as="ul"
+          gap={0.1}
+          className="shell grid gap-10 py-20 md:grid-cols-2 lg:py-24"
+        >
+          {[
+            {
+              href: "/materials",
+              eyebrow: "Materials",
+              title: "Six fibres we know well.",
+              copy: "Jute, cotton canvas, Shital Patti, khadi, handmade paper and linen — where each comes from, and what printing, labelling and linings we can put on it.",
+            },
+            {
+              href: "/sustainability",
+              eyebrow: "Sustainability",
+              title: "Sustainable by nature. Crafted in India.",
+              copy: "How the work is arranged, what happens to a piece at the end of its life, and why we describe our practice rather than certify it.",
+            },
+          ].map((card) => (
+            <StaggerItem as="li" key={card.href}>
+              <Link
+                href={card.href}
+                className="group flex h-full flex-col border border-linen bg-shell p-8 transition-colors duration-500 hover:bg-sand md:p-10"
+              >
+                <Eyebrow>{card.eyebrow}</Eyebrow>
+                <h2 className="mt-4 font-display text-[1.75rem] leading-snug md:text-[2rem]">
+                  {card.title}
+                </h2>
+                <p className="mt-4 text-sm leading-relaxed text-cocoa">
+                  {card.copy}
                 </p>
-              </StaggerItem>
-            ))}
-          </Stagger>
-        </div>
-      </section>
-
-      {/* ============================================================
-          Sustainability
-          ============================================================ */}
-      <section
-        id="sustainability"
-        className="scroll-mt-24 border-y border-linen bg-shell"
-      >
-        <div className="shell py-24 lg:py-32">
-          <Reveal>
-            <SectionHeading
-              eyebrow="Sustainability"
-              title="Four commitments, plainly stated."
-              intro="We would rather describe what we actually do than claim a certification we have not earned."
-            />
-          </Reveal>
-
-          <Stagger
-            as="ul"
-            gap={0.09}
-            className="mt-14 grid gap-x-10 gap-y-12 md:grid-cols-2"
-          >
-            {commitments.map((item, i) => (
-              <StaggerItem as="li" key={item.title} className="flex gap-6">
-                <span className="font-display text-3xl text-clay">
-                  {String(i + 1).padStart(2, "0")}
+                <span className="mt-8 flex items-center gap-3 text-[0.72rem] tracking-[0.18em] text-bark uppercase">
+                  Read more
+                  <span
+                    aria-hidden
+                    className="transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-1"
+                  >
+                    →
+                  </span>
                 </span>
-                <span>
-                  <h3 className="font-display text-2xl leading-snug">
-                    {item.title}
-                  </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-cocoa">
-                    {item.copy}
-                  </p>
-                </span>
-              </StaggerItem>
-            ))}
-          </Stagger>
-        </div>
+              </Link>
+            </StaggerItem>
+          ))}
+        </Stagger>
       </section>
 
       {/* ============================================================
           Process
           ============================================================ */}
-      <section id="process" className="scroll-mt-24 bg-cream">
+      <section id="process" className="scroll-mt-24 border-t border-linen bg-shell">
         <div className="shell py-24 lg:py-32">
           <Reveal>
             <SectionHeading
@@ -287,7 +225,7 @@ export default function OurStoryPage() {
 
           <Reveal delay={0.2} className="mt-16 flex flex-wrap items-center gap-6">
             <ButtonLink href="/contact">Start an enquiry</ButtonLink>
-            <ArrowLink href="/collections">Browse the collections</ArrowLink>
+            <ArrowLink href="/collections">View all collections</ArrowLink>
           </Reveal>
         </div>
       </section>

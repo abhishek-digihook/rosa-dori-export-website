@@ -44,7 +44,7 @@ export function ProductCard({
           {/* "View" tab slides up from the bottom edge. */}
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-x-0 bottom-0 translate-y-full bg-cream/95 py-3 text-center text-[0.62rem] tracking-[0.2em] text-bark uppercase backdrop-blur-sm transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-y-0"
+            className="pointer-events-none absolute inset-x-0 bottom-0 translate-y-full bg-cream/95 py-3 text-center text-[0.68rem] tracking-[0.2em] text-bark uppercase backdrop-blur-sm transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-y-0"
           >
             View details
           </div>
@@ -54,10 +54,10 @@ export function ProductCard({
           <h3 className="font-display text-xl leading-snug transition-colors duration-300 group-hover:text-bark">
             {product.name}
           </h3>
-          <p className="mt-1.5 text-sm leading-relaxed text-cocoa">
+          <p className="mt-2.5 text-sm leading-relaxed text-cocoa">
             {product.summary}
           </p>
-          <p className="mt-3 text-[0.62rem] tracking-[0.16em] text-mist uppercase">
+          <p className="mt-3 text-[0.68rem] tracking-[0.16em] text-mist uppercase">
             {product.materials[0]}
           </p>
         </div>

@@ -12,7 +12,7 @@ const fieldClass =
   "w-full border-b border-espresso/20 bg-transparent py-3 text-sm text-espresso placeholder:text-mist transition-colors focus:border-bark focus:outline-none";
 
 const labelClass =
-  "block text-[0.62rem] tracking-[0.18em] text-mist uppercase";
+  "block text-[0.68rem] tracking-[0.18em] text-mist uppercase";
 
 export function EnquiryForm({
   defaultIntent = "general",
@@ -105,7 +105,7 @@ export function EnquiryForm({
           <div className="grid gap-8 sm:grid-cols-2">
             <div>
               <label htmlFor="name" className={labelClass}>
-                Your name *
+                Full name *
               </label>
               <input
                 id="name"
@@ -114,20 +114,6 @@ export function EnquiryForm({
                 required
                 autoComplete="name"
                 placeholder="Jane Fernandes"
-                className={fieldClass}
-              />
-            </div>
-
-            <div>
-              <label htmlFor="company" className={labelClass}>
-                Company
-              </label>
-              <input
-                id="company"
-                name="company"
-                type="text"
-                autoComplete="organization"
-                placeholder="Your brand or business"
                 className={fieldClass}
               />
             </div>
@@ -146,53 +132,12 @@ export function EnquiryForm({
                 className={fieldClass}
               />
             </div>
-
-            <div>
-              <label htmlFor="phone" className={labelClass}>
-                Phone / WhatsApp
-              </label>
-              <input
-                id="phone"
-                name="phone"
-                type="tel"
-                autoComplete="tel"
-                placeholder="+44 7700 900000"
-                className={fieldClass}
-              />
-            </div>
-
-            <div>
-              <label htmlFor="country" className={labelClass}>
-                Country
-              </label>
-              <input
-                id="country"
-                name="country"
-                type="text"
-                autoComplete="country-name"
-                placeholder="United Kingdom"
-                className={fieldClass}
-              />
-            </div>
-
-            <div>
-              <label htmlFor="quantity" className={labelClass}>
-                Indicative quantity
-              </label>
-              <input
-                id="quantity"
-                name="quantity"
-                type="text"
-                placeholder="e.g. 5,000 units"
-                className={fieldClass}
-              />
-            </div>
           </div>
 
           <div className="grid gap-8 sm:grid-cols-2">
             <div>
               <label htmlFor="intent" className={labelClass}>
-                What can we help with? *
+                Type of message *
               </label>
               <select
                 id="intent"
@@ -237,16 +182,21 @@ export function EnquiryForm({
 
           <div>
             <label htmlFor="message" className={labelClass}>
-              Your brief *
+              Message *
             </label>
             <textarea
               id="message"
               name="message"
               required
               rows={5}
-              placeholder="Tell us about sizes, materials, branding, timelines — or paste a reference. The more detail, the more useful our first reply."
+              placeholder="Tell us about sizes, materials, branding, quantities or timelines — or paste a reference. The more detail, the more useful our first reply."
               className={`${fieldClass} resize-y`}
             />
+            <p className="mt-3 text-xs leading-relaxed text-mist">
+              Everything is made to order. Tell us the quantity you have in mind
+              and we will confirm minimum order quantities, lead times and
+              pricing with your quotation.
+            </p>
           </div>
 
           <div className="flex flex-wrap items-center gap-6 pt-2">
@@ -264,9 +214,9 @@ export function EnquiryForm({
               />
             </button>
 
-            <p className="max-w-xs text-xs leading-relaxed text-mist">
-              We use your details only to answer this enquiry. No lists, no
-              third parties.
+            <p className="max-w-sm text-xs leading-relaxed text-mist">
+              We use your details only to answer this enquiry. They are never
+              shared with third parties and never added to a marketing list.
             </p>
           </div>
 

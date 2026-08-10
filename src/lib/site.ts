@@ -13,9 +13,9 @@ export const site = {
   legalName: "Rosa Dori",
   /** Used for canonical URLs, sitemap and Open Graph. Update on launch. */
   url: "https://www.rosadori.com",
-  tagline: "Timeless designs. Natural fibers. Made for the world.",
+  tagline: "Ethically crafted. Natural fibers. Made for the world.",
   description:
-    "Premium lifestyle products handcrafted in India using jute, canvas, Shital Patti and other natural fibers for global brands that value quality, sustainability and thoughtful design.",
+    "Premium lifestyle products handcrafted in India using jute, canvas, Shital Pati and other natural fibers for global brands that value quality, sustainability and thoughtful design.",
   strapline: "Sustainable by nature. Crafted in India. Loved worldwide.",
 
   contact: {
@@ -48,9 +48,16 @@ export type NavItem = {
   children?: { label: string; href: string; description: string }[];
 };
 
+/**
+ * Primary navigation.
+ *
+ * "Our Story" and "Sustainability" point at sections of the home page, not at
+ * routes — clicking them scrolls. Both sections carry `scroll-mt-*` so their
+ * headings clear the sticky header, and each links onward to its deeper page.
+ */
 export const navigation: NavItem[] = [
   { label: "Home", href: "/" },
-  { label: "Our Story", href: "/our-story" },
+  { label: "Our Story", href: "/#our-story" },
   {
     label: "Collections",
     href: "/collections",
@@ -60,17 +67,19 @@ export const navigation: NavItem[] = [
       description: c.tagline,
     })),
   },
+  { label: "Sustainability", href: "/#sustainability" },
+  { label: "Materials", href: "/materials" },
   { label: "Contact", href: "/contact" },
 ];
 
 /** The promises repeated across the top of the site. */
 export const pillars = [
-  { title: "Natural Fibers", copy: "Jute, cotton, khadi, handmade paper and murta reed." },
-  { title: "Skilled Artisans", copy: "Made by women artisans using time-honoured technique." },
-  { title: "Sustainable Choice", copy: "Reusable, recyclable and biodegradable by design." },
-  { title: "Timeless Design", copy: "Considered forms that outlive a season." },
-  { title: "Made in India", copy: "Produced end to end across Bengal and Uttar Pradesh." },
-  { title: "Global Delivery", copy: "Export-ready documentation and worldwide freight." },
+  { title: "Natural Fibers" },
+  { title: "Skilled Artisans" },
+  { title: "Sustainable Choice" },
+  { title: "Ethical Manufacturing" },
+  { title: "Made in India" },
+  { title: "Global Delivery" },
 ];
 
 /** Materials we work in — used on the Our Story page. */

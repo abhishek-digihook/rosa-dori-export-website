@@ -18,7 +18,9 @@
   --color-bark: #6e4423; /* brand brown — buttons, top bar */
   --color-bark-deep: #573419; /* hover state */
   --color-cocoa: #7a6553; /* secondary text */
-  --color-mist: #9d8b79; /* tertiary text, meta */
+  /* Tertiary text. Darkened from the original #9d8b79, which only reached
+     3:1 on cream — below AA for the small tracked-out labels it is used on. */
+  --color-mist: #7d6a58;
 
   /* --- Accents ----------------------------------------------------- */
   --color-olive: #7c8465; /* botanical green */
@@ -98,8 +100,9 @@
     background-color: var(--color-cream);
     color: var(--color-espresso);
     font-family: var(--font-sans);
-    font-weight: 300;
-    line-height: 1.65;
+    /* 300 read as too light at body size against the warm background. */
+    font-weight: 400;
+    line-height: 1.7;
     text-rendering: optimizeLegibility;
   }
 

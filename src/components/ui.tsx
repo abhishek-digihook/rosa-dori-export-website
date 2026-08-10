@@ -177,7 +177,7 @@ export function SectionHeading({
 /** Thin capitalised metadata row, e.g. "Jute · Reusable · Custom sizes". */
 export function MetaList({ items }: { items: string[] }) {
   return (
-    <ul className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[0.62rem] tracking-[0.16em] text-mist uppercase">
+    <ul className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[0.68rem] tracking-[0.16em] text-mist uppercase">
       {items.map((item, i) => (
         <li key={item} className="flex items-center gap-3">
           {i > 0 && <span aria-hidden className="text-linen">/</span>}
