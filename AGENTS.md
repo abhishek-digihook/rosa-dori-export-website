@@ -21,8 +21,9 @@ Tailwind v4 (CSS-first `@theme`), Motion. See `README.md` for the full picture.
   CSS `group-hover` rather than JS precisely to stay on the server.
 - **Never export non-components from a `"use client"` module and import them on
   the server** — the server receives an opaque client reference, not the value.
-  Shared constants go in `src/lib/` (this is why `INTENTS` lives in
-  `src/lib/enquiry.ts`).
+  Shared constants go in `src/lib/`, or in a module with no `"use client"` of
+  its own (this is why the button class strings live in `src/components/ui.tsx`,
+  where both server links and the client modal trigger can read them).
 - **Colours and fonts come from the `@theme` block** in `src/app/globals.css`.
   Use `bg-cream`, `text-bark`, `font-display` — don't hardcode hex values in
   components.

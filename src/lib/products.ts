@@ -111,11 +111,12 @@ export type CategorySlug =
 export type Category = {
   slug: CategorySlug;
   name: string;
-  /** Short line shown under the name in navigation and cards. */
+  /** Short summary line. Currently unrendered — kept for reuse. */
   tagline: string;
-  /** Two-sentence introduction used at the top of the category page. */
+  /** Two-sentence introduction. Renders on the collections index, and is the
+   *  meta and Open Graph description for the category page. */
   intro: string;
-  /** Signature material story for this collection. */
+  /** Signature material story. Renders on the collections index only. */
   note: string;
 };
 

@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 
 import { ProductArt } from "@/components/ProductArt";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion/Reveal";
-import { ArrowLink, ButtonLink, PageHero, SectionHeading } from "@/components/ui";
+import { EnquireButton } from "@/components/enquiry/EnquireButton";
+import { ArrowLink, PageHero, SectionHeading } from "@/components/ui";
 import { materials } from "@/lib/site";
 import type { ArtSpec } from "@/lib/products";
 
@@ -124,9 +125,7 @@ export default function MaterialsPage() {
           </Stagger>
 
           <Reveal delay={0.2} className="mt-16 flex flex-wrap items-center gap-6">
-            <ButtonLink href="/contact?intent=sample">
-              Request a sample
-            </ButtonLink>
+            <EnquireButton>Request a sample</EnquireButton>
             <ArrowLink href="/collections">View all collections</ArrowLink>
           </Reveal>
         </div>

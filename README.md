@@ -37,7 +37,20 @@ collections nested underneath.
 
 ## ⚠️ Before you go live
 
-Four things in this build are placeholders or unverified. Fix them first.
+Five things in this build are placeholders or unverified. Fix them first.
+
+### 0. The enquiry form throws every submission away
+
+Until `NEXT_PUBLIC_WEB3FORMS_KEY` (or `NEXT_PUBLIC_ENQUIRY_EMAIL`) is set, the
+modal accepts an enquiry, shows the visitor **"Thank you — someone from the team
+will reply within two working days"**, and then discards it. Nothing is sent and
+nothing is stored. Each discarded submission is logged to the browser console as
+`[enquiry] DISCARDED`.
+
+This is deliberate, so the flow can be demonstrated before an account exists —
+but it means the site is currently *promising replies it cannot deliver*. **This
+is the one item on this list that costs real business if it ships.** See "Wiring
+up the form" below; it takes about two minutes.
 
 ### 1. Contact details are invented
 
@@ -123,38 +136,55 @@ available values.
 
 ---
 
-## Wiring up the forms
+## Wiring up the form
 
-Both forms work immediately — with nothing configured they validate, log to the
-server console and return success, so you can click through the whole site. To
-actually deliver, set environment variables in `.env.local` (and in your host's
-dashboard for production):
+There is one form: a modal that opens from every "Enquire" button on the site,
+asking for **full name**, **email** and an optional **phone**. Open it from a
+product page and the product's name travels with the enquiry.
 
-### Enquiry form → `/api/enquiry`
+Submissions go straight from the browser to a free form-to-email service, so
+there is no route, no mail server and no database of our own. Set **one** of
+these in `.env.local`, and in your host's dashboard for production.
 
-Pick **one**:
+### Option A — Web3Forms (recommended)
 
-```bash
-# Option A — email via Resend (https://resend.com)
-RESEND_API_KEY=re_xxxxxxxx
-ENQUIRY_TO_EMAIL=sales@rosadori.com
-ENQUIRY_FROM_EMAIL=website@rosadori.com   # must be a verified sender domain
+Keeps your address out of the page source. Free for 250 submissions/month.
 
-# Option B — POST the payload anywhere (Zapier, Make, a CRM, a Google Sheet)
-ENQUIRY_WEBHOOK_URL=https://hooks.zapier.com/...
-```
-
-The webhook takes precedence if both are set. The route validates input, caps
-oversized fields and silently drops honeypot submissions.
-
-### Newsletter → `/api/subscribe`
+1. Enter your delivery address at [web3forms.com](https://web3forms.com) and
+   confirm it. An access key comes back.
+2. Paste it in:
 
 ```bash
-NEWSLETTER_WEBHOOK_URL=https://...   # Mailchimp, Klaviyo, Buttondown, a sheet
+NEXT_PUBLIC_WEB3FORMS_KEY=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 ```
 
-Nothing is stored server-side in either case — the routes are stateless
-forwarders, so there is no database to secure.
+The key is public by design — it only permits sending to the address you
+verified, so shipping it in the client bundle is expected.
+
+### Option B — FormSubmit (no signup)
+
+```bash
+NEXT_PUBLIC_ENQUIRY_EMAIL=sales@rosadori.com
+```
+
+No account needed. The **first** submission triggers a one-time activation email
+to that address; click the link in it and the form is live. The trade-off is
+that the address sits in the client bundle where scrapers can read it.
+
+Web3Forms wins if both are set.
+
+### Notes
+
+`NEXT_PUBLIC_*` values are baked in at build time, so **restart the dev server
+or rebuild** after changing them — a running server will not pick them up.
+
+**With neither set** the modal shows the studio's email and phone instead of a
+form, and logs a warning to the browser console. It never accepts an enquiry it
+cannot deliver.
+
+To test: open any Enquire button, submit once, and check the inbox. Provider
+errors are logged to the browser console; visitors only ever see "please email
+us at …" so no third-party diagnostics leak into the UI.
 
 ---
 
@@ -243,6 +273,7 @@ Next.js.
 
 **Any Node host** — `npm run build` then `npm run start` behind a reverse proxy.
 
-Note the site is *not* a static export: `/api/enquiry` and `/api/subscribe` need
-a Node runtime. To deploy to static hosting instead, point both forms at a
-third-party endpoint (Formspree, Netlify Forms) and delete `src/app/api`.
+**Static hosting** — the site now has no API routes of its own and the enquiry
+form posts directly to Web3Forms, so every page can be prerendered. Add
+`output: "export"` to `next.config.ts` and `images: { unoptimized: true }`, then
+serve `out/` from anywhere.

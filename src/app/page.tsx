@@ -19,57 +19,8 @@ import {
   categories,
   categoryCount,
   featuredProducts,
-  type ArtSpec,
 } from "@/lib/products";
 import { clients, pillars, site } from "@/lib/site";
-
-/** The four supporting propositions beneath the collections list. */
-const VALUES: { title: string; copy: string; art: ArtSpec }[] = [
-  {
-    title: "Thoughtful Design",
-    copy: "Functional, elegant and made for everyday living.",
-    art: {
-      form: "tote",
-      handle: "webbing",
-      texture: "canvas",
-      palette: "natural",
-      accent: "none",
-    },
-  },
-  {
-    title: "Ethical Craftsmanship",
-    copy: "Handcrafted by skilled artisans using time-honoured techniques.",
-    art: {
-      form: "round-basket",
-      handle: "twin-loop",
-      texture: "sitalpati",
-      palette: "wheat",
-      accent: "none",
-    },
-  },
-  {
-    title: "Sustainable Materials",
-    copy: "Natural fibers chosen responsibly for a cleaner tomorrow.",
-    art: {
-      form: "bottle",
-      handle: "rope",
-      texture: "paper",
-      palette: "forest",
-      accent: "seed",
-    },
-  },
-  {
-    title: "Global Delivery",
-    copy: "Tailored designs for global brands that value quality and uniqueness.",
-    art: {
-      form: "carrier",
-      handle: "leather",
-      texture: "canvas",
-      palette: "clay",
-      accent: "label",
-    },
-  },
-];
 
 export default function HomePage() {
   const hero = editorialPhoto("hero");
@@ -363,42 +314,9 @@ export default function HomePage() {
       </section>
 
       {/* ============================================================
-          Values
-          ============================================================ */}
-      <section className="bg-cream">
-        <div className="shell py-20 lg:py-24">
-          <Stagger
-            as="ul"
-            gap={0.1}
-            className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4"
-          >
-            {VALUES.map((item, i) => (
-              <StaggerItem as="li" key={item.title} className="group">
-                <p className="text-[0.66rem] tracking-[0.18em] uppercase">
-                  {item.title}
-                </p>
-                <p className="mt-3 min-h-[3.5rem] text-sm leading-relaxed text-cocoa">
-                  {item.copy}
-                </p>
-                <div className="mt-6 aspect-square overflow-hidden">
-                  <div className="h-full w-full transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105">
-                    <ProductArt
-                      art={item.art}
-                      id={`home-value-${i}`}
-                      className="h-full w-full object-cover"
-                    />
-                  </div>
-                </div>
-              </StaggerItem>
-            ))}
-          </Stagger>
-        </div>
-      </section>
-
-      {/* ============================================================
           Featured products
           ============================================================ */}
-      <section className="border-t border-linen bg-shell">
+      <section className="border-t border-linen bg-cream">
         <div className="shell py-24 lg:py-32">
           <Reveal className="flex flex-wrap items-end justify-between gap-8">
             <SectionHeading

@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
 
-import { EnquiryForm } from "@/components/EnquiryForm";
+import { EnquireButton } from "@/components/enquiry/EnquireButton";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion/Reveal";
 import { Eyebrow, PageHero } from "@/components/ui";
-import { normaliseIntent } from "@/lib/enquiry";
-import { productBySlug } from "@/lib/products";
-import { process as workflow, site } from "@/lib/site";
+import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -14,20 +12,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/contact" },
 };
 
-export default async function ContactPage({
-  searchParams,
-}: PageProps<"/contact">) {
-  const query = await searchParams;
-
-  const first = (value: string | string[] | undefined) =>
-    Array.isArray(value) ? value[0] : value;
-
-  // Product pages deep-link here with ?product= and ?intent= prefilled.
-  const intent = normaliseIntent(first(query.intent));
-
-  const rawProduct = first(query.product) ?? "";
-  const product = productBySlug(rawProduct)?.slug ?? "";
-
+export default function ContactPage() {
   const { address } = site.contact;
 
   return (
@@ -40,10 +25,24 @@ export default async function ContactPage({
 
       <section className="bg-cream">
         <div className="shell grid gap-16 py-20 lg:grid-cols-[1.35fr_1fr] lg:gap-24 lg:py-28">
-          {/* --- Form --- */}
+          {/* --- Start an enquiry --- */}
           <Reveal direction="right">
-            <h2 className="sr-only">Enquiry form</h2>
-            <EnquiryForm defaultIntent={intent} defaultProduct={product} />
+            <Eyebrow>Send us a note</Eyebrow>
+            <h2 className="mt-5 text-[2rem] leading-tight md:text-[2.5rem]">
+              Three fields, and we take it from there.
+            </h2>
+            <p className="mt-6 max-w-lg leading-relaxed text-cocoa">
+              Tell us your name, your email and — if you would rather we called
+              — a number. We reply to every enquiry within two working days,
+              with a real answer rather than an acknowledgement.
+            </p>
+            <div className="mt-10">
+              <EnquireButton>Start an enquiry</EnquireButton>
+            </div>
+            <p className="mt-6 max-w-lg text-xs leading-relaxed text-mist">
+              We use your details only to answer your enquiry. They are never
+              shared with third parties and never added to a marketing list.
+            </p>
           </Reveal>
 
           {/* --- Details --- */}
@@ -106,27 +105,6 @@ export default async function ContactPage({
                   {address.country}
                 </address>
                 <p className="mt-5 text-sm text-mist">{site.contact.hours}</p>
-              </div>
-
-              <div className="border-t border-linen pt-8">
-                <Eyebrow>What happens next</Eyebrow>
-                <Stagger as="ol" gap={0.09} className="mt-6 space-y-6">
-                  {workflow.map((step) => (
-                    <StaggerItem as="li" key={step.step} className="flex gap-4">
-                      <span className="font-display text-xl text-clay">
-                        {step.step}
-                      </span>
-                      <span>
-                        <span className="block text-sm tracking-wide">
-                          {step.title}
-                        </span>
-                        <span className="mt-1 block text-xs leading-relaxed text-mist">
-                          {step.copy}
-                        </span>
-                      </span>
-                    </StaggerItem>
-                  ))}
-                </Stagger>
               </div>
             </div>
           </Reveal>

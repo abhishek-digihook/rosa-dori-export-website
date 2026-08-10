@@ -6,6 +6,7 @@ import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 
 import { Logo } from "./Logo";
+import { useEnquiry } from "./enquiry/EnquiryProvider";
 import { navigation, site } from "@/lib/site";
 
 /* ------------------------------------------------------------------ */
@@ -115,7 +116,9 @@ function CollectionsMenu({
             animate={{ opacity: 1, y: 0 }}
             exit={reduced ? { opacity: 0 } : { opacity: 0, y: 6 }}
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="absolute left-1/2 top-full z-50 w-[24rem] -translate-x-1/2 pt-4"
+            // Left edge aligned to the trigger, not centred on it — centred
+            // put a 24rem panel halfway under its neighbours either side.
+            className="absolute top-full left-0 z-50 w-[24rem] pt-4"
           >
             <div className="overflow-hidden border border-linen bg-cream shadow-[0_24px_60px_-28px_rgba(43,32,24,0.45)]">
               <ul className="p-2">
@@ -130,13 +133,8 @@ function CollectionsMenu({
                       href={child.href}
                       className="group flex items-baseline justify-between gap-4 px-4 py-3.5 transition-colors hover:bg-sand"
                     >
-                      <span>
-                        <span className="block font-display text-lg leading-snug">
-                          {child.label}
-                        </span>
-                        <span className="mt-0.5 block text-[0.7rem] tracking-wide text-mist">
-                          {child.description}
-                        </span>
+                      <span className="font-display text-lg leading-snug">
+                        {child.label}
                       </span>
                       <span
                         aria-hidden
@@ -175,6 +173,8 @@ function MobileMenu({
   onClose: () => void;
   pathname: string;
 }) {
+  const openEnquiry = useEnquiry();
+
   // Lock the page behind the overlay while it is open.
   useEffect(() => {
     if (!open) return;
@@ -252,13 +252,16 @@ function MobileMenu({
               transition={{ delay: 0.36, duration: 0.5 }}
               className="mt-10"
             >
-              <Link
-                href="/contact"
-                onClick={onClose}
+              <button
+                type="button"
+                onClick={() => {
+                  onClose();
+                  openEnquiry();
+                }}
                 className="inline-flex w-full items-center justify-center bg-bark px-8 py-4 text-[0.72rem] tracking-[0.2em] text-cream uppercase transition-colors hover:bg-bark-deep"
               >
                 Enquire Now
-              </Link>
+              </button>
               <p className="mt-6 text-sm text-cocoa">
                 <a href={`mailto:${site.contact.email}`} className="link-wipe">
                   {site.contact.email}
@@ -284,6 +287,7 @@ function MobileMenu({
 export function Header() {
   const pathname = usePathname();
   const scrolled = useScrolled();
+  const openEnquiry = useEnquiry();
   const [menuOpen, setMenuOpen] = useState(false);
   const [renderedPath, setRenderedPath] = useState(pathname);
 
@@ -351,8 +355,9 @@ export function Header() {
           </nav>
 
           <div className="flex items-center gap-3">
-            <Link
-              href="/contact"
+            <button
+              type="button"
+              onClick={() => openEnquiry()}
               className="group relative hidden overflow-hidden border border-bark px-6 py-3 text-[0.68rem] tracking-[0.18em] text-bark uppercase transition-colors duration-500 hover:text-cream sm:inline-block"
             >
               <span className="relative z-10">Enquire Now</span>
@@ -360,7 +365,7 @@ export function Header() {
                 aria-hidden
                 className="absolute inset-0 origin-bottom scale-y-0 bg-bark transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-y-100"
               />
-            </Link>
+            </button>
 
             <button
               type="button"
