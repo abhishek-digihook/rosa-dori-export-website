@@ -4,7 +4,8 @@ import Link from "next/link";
 import { ProductImage } from "@/components/ProductImage";
 import { Parallax } from "@/components/motion/Parallax";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion/Reveal";
-import { ArrowLink, ButtonLink, Eyebrow, PageHero } from "@/components/ui";
+import { EnquireButton } from "@/components/enquiry/EnquireButton";
+import { ArrowLink, Eyebrow, PageHero } from "@/components/ui";
 import { categories, products, productsByCategory } from "@/lib/products";
 
 export const metadata: Metadata = {
@@ -144,7 +145,7 @@ export default function CollectionsPage() {
             and indicative pricing.
           </p>
           <div className="mt-10 flex justify-center">
-            <ButtonLink href="/contact">Talk to us</ButtonLink>
+            <EnquireButton>Talk to us</EnquireButton>
           </div>
         </Reveal>
       </section>

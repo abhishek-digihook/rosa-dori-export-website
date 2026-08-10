@@ -1,23 +1,15 @@
 import Link from "next/link";
 
 import { Logo } from "./Logo";
-import { Newsletter } from "./Newsletter";
-import { ProductArt } from "./ProductArt";
 import { categories } from "@/lib/products";
 import { materials, site } from "@/lib/site";
 
-const storyLinks = [
-  { label: "Our Journey", href: "/our-story" },
-  { label: "Our Artisans", href: "/our-story#artisans" },
-  { label: "How We Work", href: "/our-story#process" },
-  { label: "Sustainability", href: "/sustainability" },
-];
-
+// The enquiry modal has no intent field, so ?intent= no longer means anything.
 const supportLinks = [
   { label: "Contact Us", href: "/contact" },
-  { label: "Request a Sample", href: "/contact?intent=sample" },
-  { label: "Wholesale Enquiries", href: "/contact?intent=wholesale" },
-  { label: "Private Label", href: "/contact?intent=private-label" },
+  { label: "Request a Sample", href: "/contact" },
+  { label: "Wholesale Enquiries", href: "/contact" },
+  { label: "Private Label", href: "/contact" },
 ];
 
 function SocialIcon({ name }: { name: "instagram" | "linkedin" | "pinterest" }) {
@@ -65,43 +57,9 @@ export function Footer() {
 
   return (
     <footer className="mt-auto">
-      {/* --- Newsletter band ------------------------------------------- */}
-      <section className="border-t border-linen bg-shell">
-        <div className="grid lg:grid-cols-[minmax(0,26rem)_1fr]">
-          <div className="relative hidden min-h-[16rem] overflow-hidden lg:block">
-            <ProductArt
-              art={{
-                form: "pouch",
-                handle: "drawstring",
-                texture: "khadi",
-                palette: "clay",
-                accent: "botanical",
-              }}
-              id="footer-art"
-              className="h-full w-full object-cover"
-            />
-          </div>
-
-          <div className="flex items-center px-6 py-16 md:px-12 lg:py-20 xl:px-20">
-            <div className="w-full">
-              <h2 className="font-display text-4xl md:text-[2.75rem]">
-                Stay inspired.
-              </h2>
-              <p className="mt-4 max-w-md text-sm leading-relaxed text-cocoa">
-                Be the first to know about new collections, sustainable living
-                ideas, and stories from our journey.
-              </p>
-              <div className="mt-8">
-                <Newsletter />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* --- Link columns ---------------------------------------------- */}
       <div className="border-t border-linen bg-sand">
-        <div className="shell grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr_1fr] lg:gap-10">
+        <div className="shell grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr] lg:gap-10">
           <div>
             <Link href="/" className="inline-block text-espresso">
               <Logo wordClassName="text-[1.3rem]" />
@@ -133,8 +91,6 @@ export function Footer() {
               ))}
             </ul>
           </div>
-
-          <FooterColumn title="Our Story" links={storyLinks} />
 
           <FooterColumn
             title="Collections"

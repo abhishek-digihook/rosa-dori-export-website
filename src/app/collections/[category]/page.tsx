@@ -4,7 +4,8 @@ import { notFound } from "next/navigation";
 
 import { ProductCard } from "@/components/ProductCard";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion/Reveal";
-import { ArrowLink, ButtonLink, PageHero } from "@/components/ui";
+import { EnquireButton } from "@/components/enquiry/EnquireButton";
+import { ArrowLink, PageHero } from "@/components/ui";
 import {
   categories,
   categoryBySlug,
@@ -71,13 +72,12 @@ export default async function CategoryPage({
 
   return (
     <>
+      {/* The products speak for themselves here — `intro` and `note` are left
+          to the collections index and the page metadata. */}
       <PageHero
         eyebrow={`Collection — ${items.length} products`}
         title={category.name}
-        intro={category.intro}
       >
-        <p className="mt-6 max-w-2xl text-sm text-mist">{category.note}</p>
-
         <nav aria-label="Breadcrumb" className="mt-10">
           <ol className="flex flex-wrap items-center gap-2 text-[0.66rem] tracking-[0.14em] text-mist uppercase">
             <li>
@@ -134,9 +134,7 @@ export default async function CategoryPage({
             </p>
           </Reveal>
           <Reveal direction="left" delay={0.1} className="md:justify-self-end">
-            <ButtonLink href="/contact?intent=sample">
-              Request a sample
-            </ButtonLink>
+            <EnquireButton>Request a sample</EnquireButton>
           </Reveal>
         </div>
       </section>

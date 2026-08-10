@@ -4,9 +4,9 @@ import Link from "next/link";
 import { ProductArt } from "@/components/ProductArt";
 import { Parallax } from "@/components/motion/Parallax";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion/Reveal";
+import { EnquireButton } from "@/components/enquiry/EnquireButton";
 import {
   ArrowLink,
-  ButtonLink,
   Eyebrow,
   PageHero,
   SectionHeading,
@@ -224,7 +224,7 @@ export default function OurStoryPage() {
           </Stagger>
 
           <Reveal delay={0.2} className="mt-16 flex flex-wrap items-center gap-6">
-            <ButtonLink href="/contact">Start an enquiry</ButtonLink>
+            <EnquireButton>Start an enquiry</EnquireButton>
             <ArrowLink href="/collections">View all collections</ArrowLink>
           </Reveal>
         </div>

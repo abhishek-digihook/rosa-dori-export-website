@@ -45,7 +45,7 @@ export const site = {
 export type NavItem = {
   label: string;
   href: string;
-  children?: { label: string; href: string; description: string }[];
+  children?: { label: string; href: string }[];
 };
 
 /**
@@ -64,7 +64,6 @@ export const navigation: NavItem[] = [
     children: categories.map((c) => ({
       label: c.name,
       href: `/collections/${c.slug}`,
-      description: c.tagline,
     })),
   },
   { label: "Sustainability", href: "/#sustainability" },

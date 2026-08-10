@@ -3,6 +3,7 @@ import { Cormorant_Garamond, Jost } from "next/font/google";
 
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { EnquiryProvider } from "@/components/enquiry/EnquiryProvider";
 import { site } from "@/lib/site";
 
 import "./globals.css";
@@ -88,11 +89,14 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           Skip to content
         </a>
 
-        <Header />
-        <main id="main" className="flex-1">
-          {children}
-        </main>
-        <Footer />
+        {/* Holds the enquiry modal, so any button on any page can open it. */}
+        <EnquiryProvider>
+          <Header />
+          <main id="main" className="flex-1">
+            {children}
+          </main>
+          <Footer />
+        </EnquiryProvider>
 
         <script
           type="application/ld+json"

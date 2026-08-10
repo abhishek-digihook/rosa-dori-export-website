@@ -5,7 +5,8 @@ import { notFound } from "next/navigation";
 import { ProductCard } from "@/components/ProductCard";
 import { ProductImage } from "@/components/ProductImage";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion/Reveal";
-import { ArrowLink, ButtonLink, Eyebrow, GhostLink } from "@/components/ui";
+import { EnquireButton } from "@/components/enquiry/EnquireButton";
+import { ArrowLink, Eyebrow, GhostLink } from "@/components/ui";
 import {
   categoryBySlug,
   productBySlug,
@@ -186,11 +187,9 @@ export default async function ProductPage({
               </dl>
 
               <div className="mt-10 flex flex-wrap gap-4 border-t border-linen pt-10">
-                <ButtonLink
-                  href={`/contact?product=${product.slug}&intent=sample`}
-                >
+                <EnquireButton product={product.name}>
                   Enquire about this product
-                </ButtonLink>
+                </EnquireButton>
                 <GhostLink href={`/collections/${category.slug}`}>
                   Back to collection
                 </GhostLink>

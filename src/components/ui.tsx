@@ -5,8 +5,20 @@ import type { ComponentProps, ReactNode } from "react";
 /* Buttons                                                             */
 /* ------------------------------------------------------------------ */
 
+/**
+ * Button styling lives here as class strings rather than components so the
+ * enquiry modal's trigger — which has to be a real <button> — looks identical
+ * to these links without the markup being copied.
+ */
 const buttonBase =
   "group relative inline-flex items-center justify-center overflow-hidden px-8 py-4 text-[0.7rem] tracking-[0.18em] uppercase transition-colors duration-500";
+
+export const buttonSolid = `${buttonBase} bg-bark text-cream hover:text-cream`;
+export const buttonGhost = `${buttonBase} border border-bark text-bark hover:text-cream`;
+
+/** The panel that wipes up from the bottom edge on hover. */
+export const BUTTON_WIPE =
+  "absolute inset-0 origin-bottom scale-y-0 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-y-100";
 
 /** Solid brown button — the primary call to action. */
 export function ButtonLink({
