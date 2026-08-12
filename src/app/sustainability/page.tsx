@@ -33,7 +33,7 @@ const commitments = [
   },
   {
     title: "Craft preserved by practice",
-    copy: "Chikankari, Shital Patti weaving and hand paper-making survive by being commissioned. Every order keeps a technique in daily use.",
+    copy: "Chikankari, Shital Pati weaving and hand paper-making survive by being commissioned. Every order keeps a technique in daily use.",
   },
 ];
 
@@ -95,7 +95,7 @@ export default function SustainabilityPage() {
               </p>
               <p>
                 Production sits close to where the fibre is grown and where the
-                craft is held — jute weaving and Shital Patti in West Bengal,
+                craft is held — jute weaving and Shital Pati in West Bengal,
                 Chikankari embroidery in Uttar Pradesh — so the money reaches
                 the maker instead of a chain of intermediaries.
               </p>

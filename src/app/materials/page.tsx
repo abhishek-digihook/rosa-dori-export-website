@@ -10,7 +10,7 @@ import type { ArtSpec } from "@/lib/products";
 export const metadata: Metadata = {
   title: "Materials",
   description:
-    "The six natural fibres ROSA DORI works in — jute, cotton canvas, Shital Patti murta reed, khadi, handmade paper and linen — where each comes from and what it is good for.",
+    "The six natural fibres ROSA DORI works in — jute, cotton canvas, Shital Pati murta reed, khadi, handmade paper and linen — where each comes from and what it is good for.",
   alternates: { canonical: "/materials" },
 };
 

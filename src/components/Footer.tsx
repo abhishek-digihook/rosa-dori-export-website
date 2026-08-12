@@ -1,13 +1,12 @@
 import Link from "next/link";
 
 import { Logo } from "./Logo";
+import { EnquireButton } from "./enquiry/EnquireButton";
 import { categories } from "@/lib/products";
 import { materials, site } from "@/lib/site";
 
-// The enquiry modal has no intent field, so ?intent= no longer means anything.
 const supportLinks = [
   { label: "Contact Us", href: "/contact" },
-  { label: "Request a Sample", href: "/contact" },
   { label: "Wholesale Enquiries", href: "/contact" },
   { label: "Private Label", href: "/contact" },
 ];
@@ -108,7 +107,11 @@ export function Footer() {
             }))}
           />
 
-          <FooterColumn title="Support" links={supportLinks} />
+          <FooterColumn title="Support" links={supportLinks}>
+            <li>
+              <EnquireButton variant="link">Request a Sample</EnquireButton>
+            </li>
+          </FooterColumn>
         </div>
 
         {/* --- Contact strip ------------------------------------------- */}
@@ -160,9 +163,12 @@ export function Footer() {
 function FooterColumn({
   title,
   links,
+  children,
 }: {
   title: string;
   links: { label: string; href: string }[];
+  /** Extra list items — used for the enquiry trigger, which is a button. */
+  children?: React.ReactNode;
 }) {
   return (
     <div>
@@ -180,6 +186,7 @@ function FooterColumn({
             </Link>
           </li>
         ))}
+        {children}
       </ul>
     </div>
   );

@@ -19,10 +19,23 @@ export function EnquireButton({
 }: {
   children: React.ReactNode;
   product?: string;
-  variant?: "solid" | "ghost";
+  /** "link" renders as plain text, for use inside a list of links. */
+  variant?: "solid" | "ghost" | "link";
   className?: string;
 }) {
   const openEnquiry = useEnquiry();
+
+  if (variant === "link") {
+    return (
+      <button
+        type="button"
+        onClick={() => openEnquiry(product)}
+        className={`text-left text-sm text-cocoa transition-colors hover:text-bark ${className}`}
+      >
+        {children}
+      </button>
+    );
+  }
 
   return (
     <button

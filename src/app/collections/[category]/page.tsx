@@ -107,7 +107,7 @@ export default async function CategoryPage({
         <div className="shell py-20 lg:py-28">
           <Stagger
             gap={0.06}
-            className="grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+            className="grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3"
           >
             {items.map((product, i) => (
               <StaggerItem key={product.slug}>
@@ -121,7 +121,7 @@ export default async function CategoryPage({
       {/* ============================================================
           Customisation note
           ============================================================ */}
-      <section className="border-y border-linen bg-shell">
+      <section className="border-y border-linen bg-sand">
         <div className="shell grid gap-10 py-16 md:grid-cols-[1.2fr_1fr] md:items-center">
           <Reveal>
             <h2 className="text-[1.75rem] leading-tight md:text-[2.25rem]">

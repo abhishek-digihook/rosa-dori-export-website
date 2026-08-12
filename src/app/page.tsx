@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 
 import { HeroScene } from "@/components/HeroScene";
 import { PILLAR_ICONS } from "@/components/Icons";
@@ -15,11 +14,7 @@ import {
 } from "@/components/motion/Reveal";
 import { ArrowLink, ButtonLink, Eyebrow, SectionHeading } from "@/components/ui";
 import { editorialPhoto } from "@/lib/media";
-import {
-  categories,
-  categoryCount,
-  featuredProducts,
-} from "@/lib/products";
+import { featuredProducts } from "@/lib/products";
 import { clients, pillars, site } from "@/lib/site";
 
 export default function HomePage() {
@@ -69,19 +64,8 @@ export default function HomePage() {
 
         <div className="shell relative w-full py-24 md:py-32">
           <div className="max-w-2xl">
-            <Reveal direction="none" duration={1}>
-              <Eyebrow>Crafted by Nature</Eyebrow>
-            </Reveal>
-
-            <h1 className="mt-6 text-[2.9rem] leading-[1.03] sm:text-6xl lg:text-[4.6rem]">
-              <RevealLines
-                lines={[
-                  "Ethically Crafted.",
-                  "Natural Fibers.",
-                  "Made for the World.",
-                ]}
-                delay={0.12}
-              />
+            <h1 className="mt-6 text-[2.4rem] leading-[1.05] sm:text-5xl lg:text-[3.6rem]">
+              <RevealLines lines={["Crafted by Nature"]} delay={0.12} />
             </h1>
 
             <Reveal delay={0.5} className="mt-9">
@@ -103,19 +87,6 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* Scroll cue, pinned to the left gutter so it reads as part of the
-            type column rather than as a stray mark in the middle of the image. */}
-        <div
-          aria-hidden
-          className="shell absolute inset-x-0 bottom-8 hidden md:block"
-        >
-          <span className="flex items-center gap-3 text-[0.66rem] tracking-[0.2em] text-bark/60 uppercase">
-            Scroll
-            <span className="block h-px w-10 overflow-hidden bg-bark/25">
-              <span className="motion-safe:animate-drift block h-px w-4 bg-bark/70" />
-            </span>
-          </span>
-        </div>
       </section>
 
       {/* ============================================================
@@ -155,7 +126,7 @@ export default function HomePage() {
         <div className="shell grid items-center gap-14 py-24 lg:grid-cols-2 lg:gap-24 lg:py-32">
           <Reveal direction="right">
             <Eyebrow>Our Story</Eyebrow>
-            <h2 className="mt-5 text-[2.25rem] leading-tight md:text-[3rem]">
+            <h2 className="mt-5 text-[1.75rem] leading-tight md:text-[2.25rem]">
               Rooted in Nature.
               <br />
               Inspired by Purpose.
@@ -169,7 +140,7 @@ export default function HomePage() {
               <p>
                 Guided by a commitment to conscious design and environmental
                 responsibility, we work with natural materials such as jute,
-                canvas, cotton, Shital Patti, bamboo and handmade paper to craft
+                canvas, cotton, Shital Pati, bamboo and handmade paper to craft
                 elegant lifestyle, gifting and packaging solutions.
               </p>
               <p>
@@ -184,7 +155,7 @@ export default function HomePage() {
               </p>
             </div>
             <div className="mt-10">
-              <ArrowLink href="/our-story">Know our journey</ArrowLink>
+              <ArrowLink href="/our-story">Know Your Journey</ArrowLink>
             </div>
           </Reveal>
 
@@ -215,50 +186,6 @@ export default function HomePage() {
               </div>
             </Parallax>
           </Reveal>
-        </div>
-      </section>
-
-      {/* ============================================================
-          Collections
-          ============================================================ */}
-      <section className="border-t border-linen bg-shell">
-        <div className="shell py-24 lg:py-32">
-          <Reveal>
-            <Eyebrow>Our Collections</Eyebrow>
-          </Reveal>
-
-          {/* Oversized list rows — panel, name and arrow all animate on hover. */}
-          <Stagger as="ul" className="mt-12 border-t border-espresso/15">
-            {categories.map((category) => (
-              <StaggerItem as="li" key={category.slug}>
-                <Link
-                  href={`/collections/${category.slug}`}
-                  className="group relative flex items-center justify-between gap-6 overflow-hidden border-b border-espresso/15 py-7 md:py-9"
-                >
-                  <span
-                    aria-hidden
-                    className="absolute inset-0 -translate-x-full bg-sand transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-0"
-                  />
-
-                  <span className="relative flex flex-1 flex-col gap-1 md:flex-row md:items-baseline md:gap-8">
-                    <span className="font-display text-2xl tracking-wide transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-4 md:text-[2rem]">
-                      {category.name}
-                    </span>
-                    <span className="text-xs tracking-[0.14em] text-mist uppercase transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-4">
-                      {categoryCount(category.slug)} products
-                    </span>
-                  </span>
-
-                  <span
-                    aria-hidden
-                    className="relative text-xl text-bark transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-x-2"
-                  >
-                    →
-                  </span>
-                </Link>
-              </StaggerItem>
-            ))}
-          </Stagger>
         </div>
       </section>
 

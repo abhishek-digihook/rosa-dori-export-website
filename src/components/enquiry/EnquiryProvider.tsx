@@ -147,6 +147,7 @@ function EnquiryModal({
     const name = String(data.get("name") ?? "").trim();
     const email = String(data.get("email") ?? "").trim();
     const phone = String(data.get("phone") ?? "").trim();
+    const message = String(data.get("message") ?? "").trim();
     const honeypot = String(data.get("botcheck") ?? "");
 
     // Pre-launch, with no provider configured: walk through the states so the
@@ -157,7 +158,13 @@ function EnquiryModal({
       console.warn(
         "[enquiry] DISCARDED — no delivery configured. This enquiry was not " +
           "sent anywhere:",
-        { name, email, phone: phone || "—", product: product ?? "—" },
+        {
+          name,
+          email,
+          phone: phone || "—",
+          product: product ?? "—",
+          message: message || "—",
+        },
       );
       await new Promise((resolve) => setTimeout(resolve, 600));
       setStatus("sent");
@@ -174,6 +181,7 @@ function EnquiryModal({
       email,
       phone: phone || "—",
       product: product ?? "—",
+      message: message || "—",
     };
 
     setStatus("sending");
@@ -374,6 +382,21 @@ function EnquiryModal({
                   type="tel"
                   autoComplete="tel"
                   className={fieldClass}
+                />
+              </div>
+
+              <div>
+                <label htmlFor="enquiry-message" className={labelClass}>
+                  Message{" "}
+                  <span className="tracking-normal normal-case">
+                    (optional)
+                  </span>
+                </label>
+                <textarea
+                  id="enquiry-message"
+                  name="message"
+                  rows={4}
+                  className={`${fieldClass} resize-y`}
                 />
               </div>
 

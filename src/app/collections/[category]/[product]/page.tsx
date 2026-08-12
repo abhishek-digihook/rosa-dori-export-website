@@ -2,16 +2,15 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { ProductCard } from "@/components/ProductCard";
 import { ProductImage } from "@/components/ProductImage";
-import { Reveal, Stagger, StaggerItem } from "@/components/motion/Reveal";
+import { Reveal } from "@/components/motion/Reveal";
 import { EnquireButton } from "@/components/enquiry/EnquireButton";
-import { ArrowLink, Eyebrow, GhostLink } from "@/components/ui";
+import { Eyebrow, GhostLink } from "@/components/ui";
 import {
   categoryBySlug,
   productBySlug,
+  productFabric,
   products,
-  productsByCategory,
 } from "@/lib/products";
 import { site } from "@/lib/site";
 
@@ -86,10 +85,6 @@ export default async function ProductPage({
 
   // Guard against a valid product reached through the wrong collection path.
   if (!product || !category || product.category !== category.slug) notFound();
-
-  const related = productsByCategory(category.slug)
-    .filter((p) => p.slug !== product.slug)
-    .slice(0, 4);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -169,22 +164,20 @@ export default async function ProductPage({
                 {product.summary}
               </p>
 
-              <div className="mt-7 max-w-xl leading-relaxed text-cocoa">
+              <div className="mt-7 max-w-xl text-[1.05rem] leading-relaxed text-cocoa">
                 <p>{product.description}</p>
               </div>
 
               <Eyebrow className="mt-12">Specification</Eyebrow>
               <dl className="mt-6">
-                <Spec label="Materials" items={product.materials} />
-                <Spec
-                  label="Sizes"
-                  items={product.sizes}
-                  fallback="Custom sizes on request"
-                />
+                <Spec label="Fabric" items={[productFabric(product)]} />
                 <Spec label="Colours" items={product.colours} />
                 <Spec label="Customisation" items={product.customisation} />
-                <Spec label="Applications" items={product.applications} />
               </dl>
+
+              <p className="mt-6 text-sm text-cocoa">
+                This product is customisable.
+              </p>
 
               <div className="mt-10 flex flex-wrap gap-4 border-t border-linen pt-10">
                 <EnquireButton product={product.name}>
@@ -204,38 +197,6 @@ export default async function ProductPage({
           </div>
         </div>
       </article>
-
-      {/* ============================================================
-          Related
-          ============================================================ */}
-      {related.length > 0 && (
-        <section className="border-t border-linen bg-shell">
-          <div className="shell py-20">
-            <div className="flex flex-wrap items-end justify-between gap-6">
-              <div>
-                <Eyebrow>More from this collection</Eyebrow>
-                <h2 className="mt-4 text-[1.75rem] md:text-[2.25rem]">
-                  {category.name}
-                </h2>
-              </div>
-              <ArrowLink href={`/collections/${category.slug}`}>
-                View all {productsByCategory(category.slug).length} products
-              </ArrowLink>
-            </div>
-
-            <Stagger
-              gap={0.07}
-              className="mt-12 grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4"
-            >
-              {related.map((item) => (
-                <StaggerItem key={item.slug}>
-                  <ProductCard product={item} instance="related" />
-                </StaggerItem>
-              ))}
-            </Stagger>
-          </div>
-        </section>
-      )}
 
       <script
         type="application/ld+json"

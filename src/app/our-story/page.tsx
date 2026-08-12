@@ -124,7 +124,7 @@ export default function OurStoryPage() {
               <p>
                 We work with clusters of skilled women artisans across West
                 Bengal and Uttar Pradesh — jute weavers, Chikankari
-                embroiderers, Shital Patti mat-makers and hand paper-makers.
+                embroiderers, Shital Pati mat-makers and hand paper-makers.
                 Many learned their craft from a previous generation and are
                 teaching it to the next.
               </p>
@@ -160,7 +160,7 @@ export default function OurStoryPage() {
               href: "/materials",
               eyebrow: "Materials",
               title: "Six fibres we know well.",
-              copy: "Jute, cotton canvas, Shital Patti, khadi, handmade paper and linen — where each comes from, and what printing, labelling and linings we can put on it.",
+              copy: "Jute, cotton canvas, Shital Pati, khadi, handmade paper and linen — where each comes from, and what printing, labelling and linings we can put on it.",
             },
             {
               href: "/sustainability",

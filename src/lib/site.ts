@@ -94,7 +94,7 @@ export const materials = [
     copy: "Heavyweight woven cotton that softens with age instead of wearing out. Takes print and embroidery cleanly, washes indefinitely.",
   },
   {
-    name: "Shital Patti",
+    name: "Shital Pati",
     origin: "Cooch Behar, West Bengal",
     copy: "Murta reed, split by hand and woven into mats so fine they were once given as royal gifts. Naturally cool, and unlike anything machine-made.",
   },

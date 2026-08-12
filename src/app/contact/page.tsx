@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 
 import { EnquireButton } from "@/components/enquiry/EnquireButton";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion/Reveal";
-import { Eyebrow, PageHero } from "@/components/ui";
-import { site } from "@/lib/site";
+import { Eyebrow, PageHero, SectionHeading } from "@/components/ui";
+import { process as workflow, site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -29,12 +29,13 @@ export default function ContactPage() {
           <Reveal direction="right">
             <Eyebrow>Send us a note</Eyebrow>
             <h2 className="mt-5 text-[2rem] leading-tight md:text-[2.5rem]">
-              Three fields, and we take it from there.
+              A short form, and we take it from there.
             </h2>
             <p className="mt-6 max-w-lg leading-relaxed text-cocoa">
-              Tell us your name, your email and — if you would rather we called
-              — a number. We reply to every enquiry within two working days,
-              with a real answer rather than an acknowledgement.
+              Your name and email are all we need. Add a number if you would
+              rather we called, and a message if you already know what you are
+              after. We reply to every enquiry within two working days, with a
+              real answer rather than an acknowledgement.
             </p>
             <div className="mt-10">
               <EnquireButton>Start an enquiry</EnquireButton>
@@ -108,6 +109,35 @@ export default function ContactPage() {
               </div>
             </div>
           </Reveal>
+        </div>
+      </section>
+
+      {/* ============================================================
+          How the process works
+          ============================================================ */}
+      <section className="border-t border-linen bg-sand">
+        <div className="shell py-20 lg:py-24">
+          <Reveal>
+            <SectionHeading
+              eyebrow="How it works"
+              title="From your first message to freight."
+              intro="Three stages, whether you are ordering five hundred pieces or fifty thousand."
+            />
+          </Reveal>
+
+          <Stagger as="ol" gap={0.12} className="mt-14 grid gap-12 md:grid-cols-3">
+            {workflow.map((step) => (
+              <StaggerItem as="li" key={step.step}>
+                <span className="font-display text-5xl text-clay">
+                  {step.step}
+                </span>
+                <h3 className="mt-4 font-display text-2xl">{step.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-cocoa">
+                  {step.copy}
+                </p>
+              </StaggerItem>
+            ))}
+          </Stagger>
         </div>
       </section>
 

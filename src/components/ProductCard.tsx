@@ -50,16 +50,12 @@ export function ProductCard({
           </div>
         </div>
 
+        {/* Name only. A fixed two-line box keeps every card in a row the same
+            height, so the images stay on one baseline whether a name wraps. */}
         <div className="pt-5">
-          <h3 className="font-display text-xl leading-snug transition-colors duration-300 group-hover:text-bark">
+          <h3 className="font-display text-xl leading-snug transition-colors duration-300 group-hover:text-bark sm:min-h-[3.5rem]">
             {product.name}
           </h3>
-          <p className="mt-2.5 text-sm leading-relaxed text-cocoa">
-            {product.summary}
-          </p>
-          <p className="mt-3 text-[0.68rem] tracking-[0.16em] text-mist uppercase">
-            {product.materials[0]}
-          </p>
         </div>
       </Link>
     </article>
