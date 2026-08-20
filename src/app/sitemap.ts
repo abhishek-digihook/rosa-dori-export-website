@@ -28,12 +28,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
-      url: url("/materials"),
-      lastModified: now,
-      changeFrequency: "yearly",
-      priority: 0.7,
-    },
-    {
       url: url("/contact"),
       lastModified: now,
       changeFrequency: "yearly",

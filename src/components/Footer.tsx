@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Logo } from "./Logo";
 import { EnquireButton } from "./enquiry/EnquireButton";
 import { categories } from "@/lib/products";
-import { materials, site } from "@/lib/site";
+import { site } from "@/lib/site";
 
 const supportLinks = [
   { label: "Contact Us", href: "/contact" },
@@ -58,7 +58,7 @@ export function Footer() {
     <footer className="mt-auto">
       {/* --- Link columns ---------------------------------------------- */}
       <div className="border-t border-linen bg-sand">
-        <div className="shell grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr] lg:gap-10">
+        <div className="shell grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr] lg:gap-10">
           <div>
             <Link href="/" className="inline-block text-espresso">
               <Logo wordClassName="text-[1.3rem]" />
@@ -96,14 +96,6 @@ export function Footer() {
             links={categories.map((c) => ({
               label: c.name,
               href: `/collections/${c.slug}`,
-            }))}
-          />
-
-          <FooterColumn
-            title="Materials"
-            links={materials.slice(0, 5).map((m) => ({
-              label: m.name,
-              href: "/materials",
             }))}
           />
 

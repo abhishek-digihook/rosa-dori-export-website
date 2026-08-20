@@ -146,22 +146,16 @@ export default function OurStoryPage() {
       </section>
 
       {/* ============================================================
-          Where to go next — the materials and sustainability detail now
-          lives on its own page rather than extending this one.
+          Where to go next — the sustainability detail lives on its own page
+          rather than extending this one.
           ============================================================ */}
       <section className="bg-cream">
         <Stagger
           as="ul"
           gap={0.1}
-          className="shell grid gap-10 py-20 md:grid-cols-2 lg:py-24"
+          className="shell grid gap-10 py-20 lg:py-24"
         >
           {[
-            {
-              href: "/materials",
-              eyebrow: "Materials",
-              title: "Six fibres we know well.",
-              copy: "Jute, cotton canvas, Shital Pati, khadi, handmade paper and linen — where each comes from, and what printing, labelling and linings we can put on it.",
-            },
             {
               href: "/sustainability",
               eyebrow: "Sustainability",

@@ -185,7 +185,7 @@ export default function SustainabilityPage() {
 
           <Reveal delay={0.2} className="mt-16 flex flex-wrap items-center gap-6">
             <EnquireButton>Start an enquiry</EnquireButton>
-            <ArrowLink href="/materials">See the materials</ArrowLink>
+            <ArrowLink href="/collections">View all collections</ArrowLink>
           </Reveal>
         </div>
       </section>

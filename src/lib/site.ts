@@ -67,7 +67,6 @@ export const navigation: NavItem[] = [
     })),
   },
   { label: "Sustainability", href: "/#sustainability" },
-  { label: "Materials", href: "/materials" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -81,7 +80,12 @@ export const pillars = [
   { title: "Global Delivery" },
 ];
 
-/** Materials we work in — used on the Our Story page. */
+/**
+ * Materials we work in.
+ *
+ * Currently unrendered — the Materials page and the footer column that used
+ * this were removed. Kept so the copy is not lost if either returns.
+ */
 export const materials = [
   {
     name: "Jute",
