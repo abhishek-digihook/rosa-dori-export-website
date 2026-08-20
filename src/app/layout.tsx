@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     "sustainable packaging",
     "wine bottle bags",
     "cotton canvas tote",
-    "Shital Pati",
+    "Sital Pati",
     "handmade paper packaging",
     "private label bags",
     "eco-friendly retail packaging",
@@ -65,14 +65,14 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     description: site.description,
     email: site.contact.email,
     telephone: site.contact.phone,
-    address: {
+    address: site.contact.offices.map((office) => ({
       "@type": "PostalAddress",
-      streetAddress: site.contact.address.line2,
-      addressLocality: site.contact.address.city,
-      addressRegion: site.contact.address.region,
-      postalCode: site.contact.address.postcode,
+      streetAddress: `${office.line1}, ${office.line2}`,
+      addressLocality: office.city,
+      addressRegion: office.region,
+      postalCode: office.postcode,
       addressCountry: "IN",
-    },
+    })),
     sameAs: Object.values(site.social),
   };
 

@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 
 import { EnquireButton } from "@/components/enquiry/EnquireButton";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion/Reveal";
-import { Eyebrow, PageHero, SectionHeading } from "@/components/ui";
-import { process as workflow, site } from "@/lib/site";
+import { Eyebrow, PageHero } from "@/components/ui";
+import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -13,8 +13,6 @@ export const metadata: Metadata = {
 };
 
 export default function ContactPage() {
-  const { address } = site.contact;
-
   return (
     <>
       <PageHero
@@ -54,7 +52,7 @@ export default function ContactPage() {
                 <dl className="mt-6 space-y-5">
                   <div>
                     <dt className="text-[0.68rem] tracking-[0.18em] text-mist uppercase">
-                      General
+                      Email
                     </dt>
                     <dd className="mt-1">
                       <a
@@ -62,19 +60,6 @@ export default function ContactPage() {
                         className="link-wipe text-lg"
                       >
                         {site.contact.email}
-                      </a>
-                    </dd>
-                  </div>
-                  <div>
-                    <dt className="text-[0.68rem] tracking-[0.18em] text-mist uppercase">
-                      Sales & wholesale
-                    </dt>
-                    <dd className="mt-1">
-                      <a
-                        href={`mailto:${site.contact.sales}`}
-                        className="link-wipe text-lg"
-                      >
-                        {site.contact.sales}
                       </a>
                     </dd>
                   </div>
@@ -95,49 +80,29 @@ export default function ContactPage() {
               </div>
 
               <div className="border-t border-linen pt-8">
-                <Eyebrow>Studio</Eyebrow>
-                <address className="mt-5 text-sm leading-relaxed text-cocoa not-italic">
-                  {address.line1}
-                  <br />
-                  {address.line2}
-                  <br />
-                  {address.city}, {address.region} {address.postcode}
-                  <br />
-                  {address.country}
-                </address>
-                <p className="mt-5 text-sm text-mist">{site.contact.hours}</p>
+                <Eyebrow>Offices</Eyebrow>
+                <div className="mt-5 space-y-6">
+                  {site.contact.offices.map((office) => (
+                    <div key={office.label}>
+                      <p className="text-[0.68rem] tracking-[0.18em] text-mist uppercase">
+                        {office.label}
+                      </p>
+                      <address className="mt-2 text-sm leading-relaxed text-cocoa not-italic">
+                        {office.line1}
+                        <br />
+                        {office.line2}
+                        <br />
+                        {office.city}, {office.region} {office.postcode}
+                        <br />
+                        {office.country}
+                      </address>
+                    </div>
+                  ))}
+                </div>
+                <p className="mt-6 text-sm text-mist">{site.contact.hours}</p>
               </div>
             </div>
           </Reveal>
-        </div>
-      </section>
-
-      {/* ============================================================
-          How the process works
-          ============================================================ */}
-      <section className="border-t border-linen bg-sand">
-        <div className="shell py-20 lg:py-24">
-          <Reveal>
-            <SectionHeading
-              eyebrow="How it works"
-              title="From your first message to freight."
-              intro="Three stages, whether you are ordering five hundred pieces or fifty thousand."
-            />
-          </Reveal>
-
-          <Stagger as="ol" gap={0.12} className="mt-14 grid gap-12 md:grid-cols-3">
-            {workflow.map((step) => (
-              <StaggerItem as="li" key={step.step}>
-                <span className="font-display text-5xl text-clay">
-                  {step.step}
-                </span>
-                <h3 className="mt-4 font-display text-2xl">{step.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-cocoa">
-                  {step.copy}
-                </p>
-              </StaggerItem>
-            ))}
-          </Stagger>
         </div>
       </section>
 

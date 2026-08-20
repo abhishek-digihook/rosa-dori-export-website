@@ -52,7 +52,6 @@ function SocialIcon({ name }: { name: "instagram" | "linkedin" | "pinterest" }) 
 
 export function Footer() {
   const year = new Date().getFullYear();
-  const { address } = site.contact;
 
   return (
     <footer className="mt-auto">
@@ -109,7 +108,7 @@ export function Footer() {
         {/* --- Contact strip ------------------------------------------- */}
         <div className="shell">
           <div className="rule" />
-          <div className="grid gap-6 py-8 text-sm text-cocoa sm:grid-cols-3">
+          <div className="grid gap-6 py-8 text-sm text-cocoa sm:grid-cols-2 lg:grid-cols-4">
             <p>
               <span className="mb-1 block text-[0.68rem] tracking-[0.2em] text-mist uppercase">
                 Email
@@ -126,15 +125,17 @@ export function Footer() {
                 {site.contact.phone}
               </a>
             </p>
-            <p>
-              <span className="mb-1 block text-[0.68rem] tracking-[0.2em] text-mist uppercase">
-                Studio
-              </span>
-              <span className="not-italic">
-                {address.line2}, {address.city} {address.postcode},{" "}
-                {address.country}
-              </span>
-            </p>
+            {site.contact.offices.map((office) => (
+              <p key={office.label}>
+                <span className="mb-1 block text-[0.68rem] tracking-[0.2em] text-mist uppercase">
+                  {office.label}
+                </span>
+                <span className="not-italic">
+                  {office.line1}, {office.line2}, {office.city}{" "}
+                  {office.postcode}
+                </span>
+              </p>
+            ))}
           </div>
         </div>
 

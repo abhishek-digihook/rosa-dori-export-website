@@ -26,8 +26,10 @@ export function ProductCard({
         href={`/collections/${product.category}/${product.slug}`}
         className="group block"
       >
-        <div className="relative aspect-4/5 overflow-hidden bg-sand">
-          <div className="h-full w-full transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.06]">
+        <div className="relative aspect-square overflow-hidden bg-sand">
+          {/* Inset by its own absolute position, not padding — a `fill` image
+              is laid out against the padding box, so p-* would do nothing. */}
+          <div className="absolute inset-3 transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]">
             <ProductImage
               product={product}
               instance={instance}

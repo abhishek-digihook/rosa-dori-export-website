@@ -16,18 +16,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
-      url: url("/our-story"),
-      lastModified: now,
-      changeFrequency: "yearly",
-      priority: 0.7,
-    },
-    {
-      url: url("/sustainability"),
-      lastModified: now,
-      changeFrequency: "yearly",
-      priority: 0.7,
-    },
-    {
       url: url("/contact"),
       lastModified: now,
       changeFrequency: "yearly",

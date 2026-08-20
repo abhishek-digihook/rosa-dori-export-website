@@ -46,7 +46,7 @@ export type ArtTexture =
   | "jute" // open hessian weave
   | "canvas" // fine cotton twill
   | "paper" // deckle-edged handmade paper
-  | "sitalpati" // Shital Pati mat weave
+  | "sitalpati" // Sital Pati mat weave
   | "khadi" // slubby handloom cotton
   | "newsprint" // printed newspaper pattern
   | "stripe" // woven stripe
@@ -140,7 +140,7 @@ export const categories: Category[] = [
   },
   {
     slug: "food-and-deli",
-    name: "Food & Deli Bags",
+    name: "Food & Deli Packaging",
     tagline: "Baskets, hampers & bread bags",
     intro:
       "Serviceware and takeaway packaging for bakeries, delicatessens and food halls. Breathable natural fibres keep bread crisp and produce fresh, while striped jute and organic cotton give a counter or hamper an unmistakably handmade character.",
@@ -159,8 +159,8 @@ export const categories: Category[] = [
     name: "Lifestyle & Promotional Products",
     tagline: "Baskets, handbags, yoga & picnic",
     intro:
-      "Pieces for the home and the day out — laundry baskets, picnic sets, yoga carriers, reversible handbags and our hand-woven Shital Pati range. Designed as objects people keep, not packaging people discard.",
-    note: "Includes our Shital Pati collection, hand-woven in West Bengal from murta reed.",
+      "Pieces for the home and the day out — laundry baskets, picnic sets, yoga carriers, reversible handbags and our hand-woven Sital Pati range. Designed as objects people keep, not packaging people discard.",
+    note: "Includes our Sital Pati collection, hand-woven in West Bengal from murta reed.",
   },
 ];
 
@@ -989,12 +989,12 @@ export const products: Product[] = [
   },
   {
     slug: "sitalpati-picnic-basket-mediterranean",
-    name: "Shital Pati Picnic Basket — Mediterranean",
+    name: "Sital Pati Picnic Basket — Mediterranean",
     category: "lifestyle-and-promotions",
     summary: "Hand-woven murta reed basket in a blue colourway.",
     description:
-      "Hand-woven from murta reed by Shital Pati artisans in West Bengal, this picnic basket carries a craft that is several centuries old into a contemporary blue and natural colourway. Each mat is split, dyed and woven by hand, so the weave tension and tone vary slightly from piece to piece — the signature of genuine handwork.",
-    materials: ["Hand-woven murta reed (Shital Pati)", "Cotton lining", "Reinforced frame"],
+      "Hand-woven from murta reed by Sital Pati artisans in West Bengal, this picnic basket carries a craft that is several centuries old into a contemporary blue and natural colourway. Each mat is split, dyed and woven by hand, so the weave tension and tone vary slightly from piece to piece — the signature of genuine handwork.",
+    materials: ["Hand-woven murta reed (Sital Pati)", "Cotton lining", "Reinforced frame"],
     sizes: [],
     colours: ["Mediterranean blue / natural", "Custom weave colourways"],
     customisation: ["Custom weave colourways", "Lining fabric selection", "Custom dimensions", "Woven labels"],
@@ -1009,12 +1009,12 @@ export const products: Product[] = [
   },
   {
     slug: "sitalpati-picnic-basket-sunny",
-    name: "Shital Pati Picnic Basket — Sunny",
+    name: "Sital Pati Picnic Basket — Sunny",
     category: "lifestyle-and-promotions",
     summary: "The woven picnic basket in a warm yellow colourway.",
     description:
       "The same hand-woven murta reed construction in a warm yellow and natural colourway, built around a reinforced frame that holds its shape when fully loaded. Woven to order, which means the colourway can be matched to a seasonal range rather than chosen from stock.",
-    materials: ["Hand-woven murta reed (Shital Pati)", "Cotton lining", "Reinforced frame"],
+    materials: ["Hand-woven murta reed (Sital Pati)", "Cotton lining", "Reinforced frame"],
     sizes: [],
     colours: ["Sunny yellow / natural", "Custom weave colourways"],
     customisation: ["Custom weave colourways", "Lining fabric selection", "Custom dimensions", "Woven labels"],
@@ -1029,12 +1029,12 @@ export const products: Product[] = [
   },
   {
     slug: "sitalpati-picnic-bag-small",
-    name: "Shital Pati Picnic Bag — Small",
+    name: "Sital Pati Picnic Bag — Small",
     category: "lifestyle-and-promotions",
     summary: "A compact woven bag with a soft fabric lining.",
     description:
-      "A compact version of the Shital Pati picnic range, sized for a lunch, a book and a bottle. The woven reed body is soft enough to carry against the hip and rigid enough to stand on its own — the quality that makes Shital Pati unusual among natural weaves.",
-    materials: ["Hand-woven murta reed (Shital Pati)", "Cotton lining"],
+      "A compact version of the Sital Pati picnic range, sized for a lunch, a book and a bottle. The woven reed body is soft enough to carry against the hip and rigid enough to stand on its own — the quality that makes Sital Pati unusual among natural weaves.",
+    materials: ["Hand-woven murta reed (Sital Pati)", "Cotton lining"],
     sizes: [],
     colours: ["Natural", "Two-tone weave", "Custom weave colourways"],
     customisation: ["Custom weave colourways", "Lining fabric selection", "Custom dimensions", "Woven labels"],
@@ -1049,12 +1049,12 @@ export const products: Product[] = [
   },
   {
     slug: "sitalpati-yoga-bag-indigo",
-    name: "Shital Pati Yoga Bag — Indigo",
+    name: "Sital Pati Yoga Bag — Indigo",
     category: "lifestyle-and-promotions",
     summary: "Woven reed mat carrier in a deep indigo weave.",
     description:
       "A yoga mat carrier woven from murta reed in a deep indigo and natural pattern, with a cotton shoulder strap. Reed is naturally cool to the touch and holds no odour, which makes it a genuinely well-matched material for studio use rather than simply a decorative one.",
-    materials: ["Hand-woven murta reed (Shital Pati)", "Cotton shoulder strap", "Cotton lining"],
+    materials: ["Hand-woven murta reed (Sital Pati)", "Cotton shoulder strap", "Cotton lining"],
     sizes: [],
     colours: ["Indigo / natural", "Custom weave colourways"],
     customisation: ["Custom weave colourways", "Strap length", "Custom dimensions", "Woven labels"],
@@ -1069,12 +1069,12 @@ export const products: Product[] = [
   },
   {
     slug: "sitalpati-lunch-bag-lemon",
-    name: "Shital Pati Lunch Bag — Lemon",
+    name: "Sital Pati Lunch Bag — Lemon",
     category: "lifestyle-and-promotions",
     summary: "Compact woven lunch bag with a top handle.",
     description:
       "A neat top-handled lunch bag woven in lemon and natural reed, lined in cotton and sized for a stacked tiffin or a boxed lunch. Reed keeps the interior cool for longer than a fabric bag would, which is the reason the material has been used for food carrying in Bengal for generations.",
-    materials: ["Hand-woven murta reed (Shital Pati)", "Cotton lining", "Top handle"],
+    materials: ["Hand-woven murta reed (Sital Pati)", "Cotton lining", "Top handle"],
     sizes: [],
     colours: ["Lemon / natural", "Custom weave colourways"],
     customisation: ["Custom weave colourways", "Lining fabric selection", "Custom dimensions", "Woven labels"],
@@ -1089,12 +1089,12 @@ export const products: Product[] = [
   },
   {
     slug: "sitalpati-lunch-bag-black",
-    name: "Shital Pati Lunch Bag — Black",
+    name: "Sital Pati Lunch Bag — Black",
     category: "lifestyle-and-promotions",
     summary: "The woven lunch bag in a graphic black weave.",
     description:
       "The lunch bag woven in black and natural reed — a graphic, almost architectural pattern that suits contemporary retail and hospitality settings. Same cotton lining, same top handle, same hand-woven construction.",
-    materials: ["Hand-woven murta reed (Shital Pati)", "Cotton lining", "Top handle"],
+    materials: ["Hand-woven murta reed (Sital Pati)", "Cotton lining", "Top handle"],
     sizes: [],
     colours: ["Black / natural", "Custom weave colourways"],
     customisation: ["Custom weave colourways", "Lining fabric selection", "Custom dimensions", "Woven labels"],
@@ -1126,7 +1126,7 @@ export const productFabric = (product: Product): string => {
   if (product.fabric) return product.fabric;
 
   const first = (product.materials[0] ?? "").toLowerCase();
-  if (first.includes("murta") || first.includes("shital")) return "Shital Pati";
+  if (first.includes("murta") || first.includes("shital")) return "Sital Pati";
   if (first.includes("seed paper")) return "Seed paper";
   if (first.includes("paper")) return "Handmade paper";
   if (first.includes("canvas")) return "Cotton canvas";

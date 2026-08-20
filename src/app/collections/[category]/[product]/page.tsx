@@ -138,12 +138,14 @@ export default async function ProductPage({
             <Reveal direction="right">
               {/* Sticks alongside the specification column on wide screens. */}
               <div className="lg:sticky lg:top-28">
-                <div className="relative aspect-4/5 overflow-hidden bg-sand">
-                  <ProductImage
-                    product={product}
-                    priority
-                    sizes="(min-width: 1024px) 40rem, 92vw"
-                  />
+                <div className="relative aspect-square overflow-hidden bg-sand">
+                  <div className="absolute inset-6">
+                    <ProductImage
+                      product={product}
+                      priority
+                      sizes="(min-width: 1024px) 40rem, 92vw"
+                    />
+                  </div>
                 </div>
                 {product.status && (
                   <p className="mt-4 text-[0.66rem] tracking-[0.14em] text-mist uppercase">

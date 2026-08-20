@@ -74,10 +74,7 @@ export default async function CategoryPage({
     <>
       {/* The products speak for themselves here — `intro` and `note` are left
           to the collections index and the page metadata. */}
-      <PageHero
-        eyebrow={`Collection — ${items.length} products`}
-        title={category.name}
-      >
+      <PageHero eyebrow="Collection" title={category.name}>
         <nav aria-label="Breadcrumb" className="mt-10">
           <ol className="flex flex-wrap items-center gap-2 text-[0.66rem] tracking-[0.14em] text-mist uppercase">
             <li>

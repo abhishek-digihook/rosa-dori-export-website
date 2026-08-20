@@ -6,12 +6,7 @@ import { Marquee } from "@/components/Marquee";
 import { ProductArt } from "@/components/ProductArt";
 import { ProductCard } from "@/components/ProductCard";
 import { KenBurns, Parallax } from "@/components/motion/Parallax";
-import {
-  Reveal,
-  RevealLines,
-  Stagger,
-  StaggerItem,
-} from "@/components/motion/Reveal";
+import { Reveal, Stagger, StaggerItem } from "@/components/motion/Reveal";
 import { ArrowLink, ButtonLink, Eyebrow, SectionHeading } from "@/components/ui";
 import { editorialPhoto } from "@/lib/media";
 import { featuredProducts } from "@/lib/products";
@@ -28,8 +23,9 @@ export default function HomePage() {
       {/* ============================================================
           Hero
           ============================================================ */}
-      <section className="relative isolate flex min-h-[86svh] items-center overflow-hidden">
-        <KenBurns className="absolute inset-0 -z-10">
+      <section className="relative isolate flex min-h-[92svh] items-center overflow-hidden">
+        {/* Barely any zoom — at 1.14 the scale cropped the products out of frame. */}
+        <KenBurns from={1.03} className="absolute inset-0 -z-10">
           {hero ? (
             <Image
               src={hero}
@@ -64,24 +60,21 @@ export default function HomePage() {
 
         <div className="shell relative w-full py-24 md:py-32">
           <div className="max-w-2xl">
-            <h1 className="mt-6 text-[2.4rem] leading-[1.05] sm:text-5xl lg:text-[3.6rem]">
-              <RevealLines lines={["Crafted by Nature"]} delay={0.12} />
-            </h1>
+            {/* The sentence carries the hero on its own now. It stays the
+                page's single <h1> — something has to be — set in the display
+                serif and wrapped early so it sits inside the cream ramp above
+                rather than running onto the photograph. */}
+            <Reveal direction="none" duration={1}>
+              <h1 className="max-w-lg text-[1.4rem] leading-[1.35] text-espresso sm:text-[1.65rem] lg:text-[1.95rem]">
+                {site.description}
+              </h1>
+            </Reveal>
 
             <Reveal delay={0.5} className="mt-9">
               <span className="block h-px w-16 bg-bark/50" aria-hidden />
             </Reveal>
 
-            <Reveal delay={0.58}>
-              {/* Sits over the hero photograph, so it takes the primary ink
-                  rather than the secondary tone used on flat backgrounds, and
-                  wraps early enough to stay inside the cream ramp above. */}
-              <p className="mt-6 max-w-md text-[0.95rem] leading-relaxed text-espresso">
-                {site.description}
-              </p>
-            </Reveal>
-
-            <Reveal delay={0.7} className="mt-10">
+            <Reveal delay={0.6} className="mt-9">
               <ButtonLink href="/collections">Explore Collections</ButtonLink>
             </Reveal>
           </div>
@@ -140,7 +133,7 @@ export default function HomePage() {
               <p>
                 Guided by a commitment to conscious design and environmental
                 responsibility, we work with natural materials such as jute,
-                canvas, cotton, Shital Pati, bamboo and handmade paper to craft
+                canvas, cotton, Sital Pati, bamboo and handmade paper to craft
                 elegant lifestyle, gifting and packaging solutions.
               </p>
               <p>
@@ -154,9 +147,6 @@ export default function HomePage() {
                 hand.
               </p>
             </div>
-            <div className="mt-10">
-              <ArrowLink href="/our-story">Know Your Journey</ArrowLink>
-            </div>
           </Reveal>
 
           <Reveal direction="left" delay={0.1}>
@@ -165,7 +155,7 @@ export default function HomePage() {
                 {story ? (
                   <Image
                     src={story}
-                    alt="A jute picnic basket packed with wine, grapes and bread"
+                    alt="A jute and cotton canvas caddy holding a wine bottle and preserve jars"
                     fill
                     sizes="(min-width: 1024px) 40rem, 90vw"
                     className="object-cover"
@@ -209,9 +199,6 @@ export default function HomePage() {
               We choose natural, renewable fibers and eco-friendly processes to
               create products that are kind to the earth, loved worldwide.
             </p>
-            <div className="mt-10">
-              <ButtonLink href="/sustainability">Read more</ButtonLink>
-            </div>
           </Reveal>
         </div>
 
@@ -219,7 +206,7 @@ export default function HomePage() {
           {sustainability ? (
             <Image
               src={sustainability}
-              alt="A plantable seed paper wine bag, printed to grow tulsi"
+              alt="A natural jute shopper packed with bread, vegetables and preserves"
               fill
               sizes="(min-width: 1024px) 50vw, 100vw"
               className="object-cover"
@@ -249,7 +236,7 @@ export default function HomePage() {
             <SectionHeading
               eyebrow="Selected Pieces"
               title="A closer look at the range."
-              intro="Forty-three products across four collections — every one made to order, and every one customisable in size, colour and branding."
+              intro="Every piece is made to order, and every piece is customisable in size, colour and branding."
             />
             <ArrowLink href="/collections" className="pb-2">
               View all collections

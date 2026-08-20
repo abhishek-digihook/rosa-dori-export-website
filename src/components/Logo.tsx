@@ -6,7 +6,7 @@
  */
 export function Logo({
   className = "",
-  wordClassName = "text-[1.35rem] md:text-[1.6rem]",
+  wordClassName = "text-[1.7rem] md:text-[2.05rem]",
 }: {
   className?: string;
   wordClassName?: string;
@@ -14,7 +14,7 @@ export function Logo({
   return (
     <span className={`inline-flex items-center leading-none ${className}`}>
       <span
-        className={`font-display tracking-[0.2em] ${wordClassName}`}
+        className={`font-display font-semibold tracking-[0.18em] ${wordClassName}`}
         aria-hidden="true"
       >
         ROSA DORI

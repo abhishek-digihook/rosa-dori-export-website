@@ -5,13 +5,13 @@ import { ProductImage } from "@/components/ProductImage";
 import { Parallax } from "@/components/motion/Parallax";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion/Reveal";
 import { EnquireButton } from "@/components/enquiry/EnquireButton";
-import { ArrowLink, Eyebrow, PageHero } from "@/components/ui";
-import { categories, products, productsByCategory } from "@/lib/products";
+import { ArrowLink, PageHero } from "@/components/ui";
+import { categories, productsByCategory } from "@/lib/products";
 
 export const metadata: Metadata = {
   title: "Collections",
   description:
-    "Four collections of handcrafted natural-fibre products: drinks and drawstrings, food and deli bags, shoppers and carry bags, and lifestyle products. All made to order in India.",
+    "Handcrafted natural-fibre products: drinks and drawstrings, food and deli bags, shoppers and market bags, and lifestyle and promotional products. All made to order in India.",
   alternates: { canonical: "/collections" },
 };
 
@@ -20,7 +20,7 @@ export default function CollectionsPage() {
     <>
       <PageHero
         eyebrow="Our Collections"
-        title="Four collections. Forty-three products."
+        title="Our collections."
         intro="Every piece is made to order, in your dimensions, colours and branding. Browse a collection below, or tell us what you need and we will build it."
       >
         <div className="mt-10 flex flex-wrap gap-x-8 gap-y-3">
@@ -55,9 +55,6 @@ export default function CollectionsPage() {
                 direction={reversed ? "left" : "right"}
                 className={reversed ? "lg:order-2" : ""}
               >
-                <Eyebrow>
-                  {String(index + 1).padStart(2, "0")} — {items.length} products
-                </Eyebrow>
                 <h2 className="mt-5 text-[2.1rem] leading-tight md:text-[2.9rem]">
                   {category.name}
                 </h2>
@@ -77,11 +74,6 @@ export default function CollectionsPage() {
                       {item.name}
                     </li>
                   ))}
-                  {items.length > 5 && (
-                    <li className="px-3 py-1.5 text-[0.68rem] tracking-[0.12em] text-mist uppercase">
-                      +{items.length - 5} more
-                    </li>
-                  )}
                 </ul>
 
                 <div className="mt-10">
@@ -139,10 +131,9 @@ export default function CollectionsPage() {
             Not seeing quite what you need?
           </h2>
           <p className="mt-6 leading-relaxed text-cocoa">
-            The {products.length} products here are a starting point, not a
-            catalogue limit. Send us a sketch, a reference photograph or a
-            written specification and we will come back with material options
-            and indicative pricing.
+            The products here are a starting point, not a catalogue limit.
+            Send us a sketch, a reference photograph or a written specification
+            and we will come back with material options and indicative pricing.
           </p>
           <div className="mt-10 flex justify-center">
             <EnquireButton>Talk to us</EnquireButton>

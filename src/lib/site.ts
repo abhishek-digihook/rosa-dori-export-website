@@ -3,10 +3,12 @@ import { categories } from "./products";
 /**
  * Site-wide configuration.
  *
- * ⚠️  PLACEHOLDERS — the contact block below is invented. Replace every value
- * in `site.contact` and `site.social` with ROSA DORI's real details before
- * this goes live; they surface in the footer, the contact page and the
- * Organization structured data.
+ * `site.contact` holds the real details supplied by the client on 20 Aug 2026.
+ *
+ * ⚠️  STILL PLACEHOLDERS — `site.social` (the three handles are guesses) and
+ * `site.url`, which is set to rosadori.com while the company email is on
+ * therosadori.com. Confirm the live domain before launch: canonical URLs, the
+ * sitemap and every Open Graph tag derive from it.
  */
 export const site = {
   name: "ROSA DORI",
@@ -15,24 +17,36 @@ export const site = {
   url: "https://www.rosadori.com",
   tagline: "Ethically crafted. Natural fibers. Made for the world.",
   description:
-    "Premium lifestyle products handcrafted in India using jute, canvas, Shital Pati and other natural fibers for global brands that value quality, sustainability and thoughtful design.",
+    "Premium lifestyle products handcrafted in India using jute, canvas, Sital Pati and other natural fibers for global brands that value quality, sustainability and thoughtful design.",
   strapline: "Sustainable by nature. Crafted in India. Loved worldwide.",
 
   contact: {
-    email: "hello@rosadori.com",
-    sales: "sales@rosadori.com",
-    phone: "+91 98300 00000",
-    phoneHref: "+919830000000",
-    whatsapp: "+91 98300 00000",
-    address: {
-      line1: "Rosa Dori Exports",
-      line2: "Salt Lake Sector V",
-      city: "Kolkata",
-      region: "West Bengal",
-      postcode: "700091",
-      country: "India",
-    },
+    email: "info@therosadori.com",
+    phone: "+91 98715 12570",
+    phoneHref: "+919871512570",
     hours: "Monday – Saturday, 10:00 – 18:30 IST",
+
+    /** Both offices. The first is treated as the primary address. */
+    offices: [
+      {
+        label: "Gurgaon",
+        line1: "B2-1304, Shree Vardhman Flora",
+        line2: "Sector 90",
+        city: "Gurgaon",
+        region: "Haryana",
+        postcode: "122001",
+        country: "India",
+      },
+      {
+        label: "Kolkata",
+        line1: "P29 Niva Park Extension",
+        line2: "Brahmapur, Garia",
+        city: "Kolkata",
+        region: "West Bengal",
+        postcode: "700096",
+        country: "India",
+      },
+    ],
   },
 
   social: {
@@ -98,7 +112,7 @@ export const materials = [
     copy: "Heavyweight woven cotton that softens with age instead of wearing out. Takes print and embroidery cleanly, washes indefinitely.",
   },
   {
-    name: "Shital Pati",
+    name: "Sital Pati",
     origin: "Cooch Behar, West Bengal",
     copy: "Murta reed, split by hand and woven into mats so fine they were once given as royal gifts. Naturally cool, and unlike anything machine-made.",
   },
@@ -136,7 +150,12 @@ export const clients = [
   "TESCO",
 ];
 
-/** The three-step working process, used on Our Story and Contact. */
+/**
+ * The three-step working process.
+ *
+ * Currently unrendered — the "How we work" section was removed from Contact
+ * and the Our Story page is gone. Kept so the copy survives if it returns.
+ */
 export const process = [
   {
     step: "01",
