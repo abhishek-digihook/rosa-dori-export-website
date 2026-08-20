@@ -17,7 +17,7 @@ export const site = {
   url: "https://www.rosadori.com",
   tagline: "Ethically crafted. Natural fibers. Made for the world.",
   description:
-    "Premium lifestyle products handcrafted in India using jute, canvas, Sital Pati and other natural fibers for global brands that value quality, sustainability and thoughtful design.",
+    "Premium lifestyle products handcrafted in India using jute, canvas, Shital Pati and other natural fibers for global brands that value quality, sustainability and thoughtful design.",
   strapline: "Sustainable by nature. Crafted in India. Loved worldwide.",
 
   contact: {
@@ -112,7 +112,7 @@ export const materials = [
     copy: "Heavyweight woven cotton that softens with age instead of wearing out. Takes print and embroidery cleanly, washes indefinitely.",
   },
   {
-    name: "Sital Pati",
+    name: "Shital Pati",
     origin: "Cooch Behar, West Bengal",
     copy: "Murta reed, split by hand and woven into mats so fine they were once given as royal gifts. Naturally cool, and unlike anything machine-made.",
   },

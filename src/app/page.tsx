@@ -133,7 +133,7 @@ export default function HomePage() {
               <p>
                 Guided by a commitment to conscious design and environmental
                 responsibility, we work with natural materials such as jute,
-                canvas, cotton, Sital Pati, bamboo and handmade paper to craft
+                canvas, cotton, Shital Pati, bamboo and handmade paper to craft
                 elegant lifestyle, gifting and packaging solutions.
               </p>
               <p>

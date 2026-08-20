@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     "sustainable packaging",
     "wine bottle bags",
     "cotton canvas tote",
-    "Sital Pati",
+    "Shital Pati",
     "handmade paper packaging",
     "private label bags",
     "eco-friendly retail packaging",
